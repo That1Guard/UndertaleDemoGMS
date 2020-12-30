@@ -302,8 +302,8 @@ if global.mnfight = 0 and global.myfight = 0 then
       if global.bmenuno = 4 then global.msc=7            
               global.msg[4] = global.msg[0]
               snd_play(snd_select)
-              OBJ_WRITER.halt = 3
-              OBJ_INSTAWRITER.halt = 3
+              with OBJ_WRITER halt = 3
+              with OBJ_INSTAWRITER halt = 3
               instance_create(global.idealborder[0],global.idealborder[2],OBJ_INSTAWRITER)
               keyboard_clear(vk_enter)
               exit
