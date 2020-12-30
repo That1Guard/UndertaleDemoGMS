@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>mysong = global.currentsong
 volume=caster_get_volume(mysong)
-
+fadespeed=0.1
 </string>
           </argument>
         </arguments>
@@ -50,7 +50,7 @@ volume=caster_get_volume(mysong)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>volume-=0.08
+            <string>volume-=fadespeed
 if volume&lt;0.05 then volume=0
 caster_set_volume(mysong,volume)
 if volume=0 then 
