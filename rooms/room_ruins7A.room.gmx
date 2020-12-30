@@ -75,8 +75,8 @@
     <instance objName="obj_fakewaterl" x="200" y="140" name="inst_87A5BAEF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_fakewaterl" x="200" y="160" name="inst_54CB8509" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_fakewaterl" x="200" y="180" name="inst_57668B4D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_solidtall" x="120" y="200" name="inst_CB4C33D7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_solidtall" x="180" y="200" name="inst_91A94BD1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_solidtall_2" x="120" y="200" name="inst_CB4C33D7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_solidtall_2" x="180" y="200" name="inst_91A94BD1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_solidsmall" x="80" y="200" name="inst_F2D814E2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_solidsmall" x="100" y="200" name="inst_BCDB968D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_solidsmall" x="200" y="200" name="inst_54B77ECD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>

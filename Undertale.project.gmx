@@ -345,6 +345,7 @@
     <sprite>sprites\spr_tinypomjump</sprite>
     <sprite>sprites\spr_bluespear</sprite>
     <sprite>sprites\spr_whitespear</sprite>
+    <sprite>sprites\spr_solidtall_2</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background1</background>
@@ -466,7 +467,6 @@
     <script>scripts\scr_save.gml</script>
     <script>scripts\scr_onscreen.gml</script>
     <script>scripts\scr_binfowrite.gml</script>
-    <script>scripts\Attention, Hackerz.gml</script>
     <script>scripts\scr_namingscreen.gml</script>
     <script>scripts\scr_roomname.gml</script>
     <script>scripts\keyboard_multicheck.gml</script>
@@ -605,7 +605,7 @@
     <object>objects\obj_torielflame_X</object>
     <object>objects\obj_torielcutscene</object>
     <object>objects\obj_solidlong</object>
-    <object>objects\obj_solidtall</object>
+    <object>objects\obj_solidtall_2</object>
     <object>objects\obj_floweytrigger</object>
     <object>objects\obj_face_floweytalk</object>
     <object>objects\obj_floface</object>
