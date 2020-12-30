@@ -74,8 +74,11 @@ bullettype=0
           <argument>
             <kind>1</kind>
             <string>iii=instance_create(x,y,blt_hoopbullet1)
+if instance_exists(iii)
+{
 iii.dmg= global.monsteratk[myself]
 iii.bullettype=2
+}
 </string>
           </argument>
         </arguments>
@@ -99,8 +102,11 @@ iii.bullettype=2
           <argument>
             <kind>1</kind>
             <string>iii=instance_create(x,y,blt_hoopbullet1)
+if instance_exists(iii)
+{
 iii.dmg= global.monsteratk[myself]
 iii.bullettype=1
+}
 </string>
           </argument>
         </arguments>
@@ -132,15 +138,18 @@ y = yy
 if bullettype=0 then
 {
 iii=instance_create(x,y,blt_hoopbullet1)
+if instance_exists(iii)
+{
 iii.dmg= global.monsteratk[myself]
 iii.bullettype=0
+}
 }
 else
    {
    r=round(random(3))
    script_execute(SCR_BORDER,r,8)
    iii=instance_create(x,y,blt_hoopbullet2)
-   iii.dmg= global.monsteratk[myself]
+   if instance_exists(iii) then iii.dmg= global.monsteratk[myself]
    }
 
    
