@@ -337,7 +337,7 @@ alarm[8]=10
    else iwilltalk=0
    
 hplastturn=global.monsterhp[myself]
-if global.monsterhp&gt;0 then
+if global.monsterhp[myself]&gt;0 then
   {
   if iwilltalk=1
   {
