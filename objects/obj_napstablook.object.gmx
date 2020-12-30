@@ -281,7 +281,7 @@ alarm[8]=10
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if global.monsterhp&gt;0 then
+            <string>if global.monsterhp[myself]&gt;0 then
   {
   
   blcon = instance_create(x+sprite_width+21,ystart+24,obj_blconsm)  
