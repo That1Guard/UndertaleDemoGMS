@@ -33,7 +33,7 @@ pathtravel=0
 if global.flag[33]=1 then
 {
 x+=60
-conversation=24892784
+conversation=15
 }
 </string>
           </argument>
@@ -85,7 +85,14 @@ if obj_mainchara.x&gt;x+15 then obj_mainchara.hspeed=1
 conversation+=1
 path_speed=0
 obj_mainchara.speed=0
-if conversation&gt;13 then global.flag[33]=1
+if conversation=9 then with obj_spikes_room image_index = 1
+if conversation&gt;13 then {
+global.flag[33]=1
+x = 280
+conversation = 15
+with obj_spikes_room 
+    image_index = 1
+}
 </string>
           </argument>
         </arguments>
@@ -208,6 +215,7 @@ if instance_exists(obj_dialoguer)=false and conversation=7 then
    
 if instance_exists(obj_dialoguer)=false and conversation=10.5 then
    {
+   with obj_spikes_room image_index=0
    path_speed=2
    alarm[1]=11
    conversation+=0.5
@@ -221,6 +229,8 @@ if instance_exists(obj_dialoguer)=false and conversation=13 then
    conversation+=1
    if obj_mainchara.x&gt;x+15 then obj_mainchara.hspeed=1
    }
+   
+if conversation=15 then x=280
 </string>
           </argument>
         </arguments>

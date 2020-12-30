@@ -61,8 +61,7 @@ if room=room_ruins15D and x&gt;320 then yarl=15
 if room=room_ruins9 and global.flag[35]=1 then image_index=1
 if room=room_ruins11
    {
-   if obj_goofyrock.x=280 then image_index=1
-   else image_index=0
+   if global.flag[33]=1 then image_index=1
    }
 </string>
           </argument>
