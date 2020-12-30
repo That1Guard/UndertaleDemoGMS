@@ -1,4 +1,4 @@
-runvalue= (random(100) + 10*global.turn)
+runvalue= (random(100) + global.lv*2 - global.battlelv*2 + 10*global.turn)
 if runvalue > 50 then
    {
    runaway=1
