@@ -18,7 +18,7 @@ if global.inbattle=0 then
    
 if global.inbattle=1 then
    {
-   OBJ_WRITER.halt=3
+   with OBJ_WRITER halt=3
    global.typer=1
    if argument3!=0 then global.typer=argument3
    instance_create(global.idealborder[0],global.idealborder[2],OBJ_WRITER)
