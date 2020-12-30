@@ -30,12 +30,18 @@ conversation=0
 if global.plot&gt;18 then instance_destroy()
 else
 {
+with obj_mainchara
+{
+x=38
+y=144
+}
 global.typer=4
 global.interact=99
 global.facechoice=1
 global.faceemotion=0
 global.msc=0
 alarm[0]=1
+alarm[3]=3
 global.msg[0]="* This is it.../%%"
 instance_create(0,0,obj_dialoguer)
 conversation=1
@@ -76,6 +82,33 @@ instance_create(0,0,obj_dialoguer)
         </arguments>
       </action>
     </event>
+    <event eventtype="2" enumb="3">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>with obj_mainchara
+{
+x=38
+y=144
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="2" enumb="2">
       <action>
         <libid>1</libid>
@@ -94,6 +127,9 @@ instance_create(0,0,obj_dialoguer)
           <argument>
             <kind>1</kind>
             <string>obj_toroverworld3.x+=19
+obj_mainchara.y-=1
+obj_mainchara.x+=8
+obj_mainchara.visible=true
 </string>
           </argument>
         </arguments>
@@ -148,10 +184,15 @@ obj_toroverworld.myinteract=0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>toriel=instance_create(44,120,obj_toroverworld3)
+            <string>toriel=instance_create(54,120,obj_toroverworld3)
 toriel.facing=3
 toriel.sprite_index=spr_toriel_l
 toriel=direction=180
+with obj_mainchara
+{
+x=38
+y=144
+}
 </string>
           </argument>
         </arguments>
@@ -177,6 +218,7 @@ toriel=direction=180
             <string>if conversation=1 and instance_exists(obj_dialoguer)=false then
    {
    conversation=2
+   with obj_toroverworld3 x-=10
    obj_toroverworld3.rsprite = spr_toriel_handhold_r
    obj_toroverworld3.usprite = spr_toriel_handhold_u
    obj_toroverworld3.sprite_index= spr_toriel_handhold_r
@@ -190,14 +232,14 @@ if obj_toroverworld3.path_position=1 then
    {
    obj_toroverworld3.usprite=spr_toriel_u
    obj_toroverworld3.rsprite=spr_toriel_r
-   obj_mainchara.x+=20
+   obj_mainchara.x+=33
    alarm[2]=1
    obj_toroverworld3.y-=1
    obj_toroverworld3.facing=2
    obj_toroverworld3.direction=90
    global.facing=2
-   obj_mainchara.y-=2
-   obj_mainchara.visible=1
+   obj_mainchara.y-=3
+   //obj_mainchara.visible=1
    global.msg[0]="* A room of your own.&amp;* I hope you like it!/%%"
    instance_create(0,0,obj_dialoguer)
    conversation=3
@@ -209,6 +251,7 @@ if conversation=3 and instance_exists(obj_dialoguer)=false
    obj_toroverworld3.sprite_index=spr_toriel_ruffle
    obj_mainchara.visible=0
    obj_toroverworld3.usprite=spr_toriel_ruffle
+   obj_toroverworld3.dsprite=spr_toriel_ruffle
    alarm[1]=10
    conversation=4
    }
@@ -216,6 +259,7 @@ if conversation=3 and instance_exists(obj_dialoguer)=false
 if conversation=5 and instance_exists(obj_dialoguer)=false then
    {
    obj_toroverworld3.usprite=spr_toriel_u
+   obj_toroverworld3.dsprite=spr_toriel_d
    global.interact=0
    conversation=2
    with obj_toroverworld3 path_start(path_torielwalk20,6,0,false)
