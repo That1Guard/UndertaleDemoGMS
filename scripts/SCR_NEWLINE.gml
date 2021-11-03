@@ -1,3 +1,3 @@
 myx = writingx
-myy = (myy + vspacing)
-lineno = (lineno + 1)
+myy += vspacing
+lineno += 1

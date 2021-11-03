@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>myinteract=0
+            <string>myinteract = 0
 </string>
           </argument>
         </arguments>
@@ -48,7 +48,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>global.flag[14]=1
+            <string>global.flag[14] = 1
 </string>
           </argument>
         </arguments>
@@ -71,20 +71,22 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if myinteract=1 and global.plot&lt;6 then
-   {
-   global.flag[10]=0 //spared in previous battle
-   global.flag[11]=0 //ran away from previous battle
-   global.flag[12]=0 //fought last battle
-   global.flag[13]=0 //OTHER
-   global.entrance=0
-   global.battlegroup=2
-   obj_mainchara.depth=-600
-   if instance_exists(obj_battler) = false then instance_create(0,0,obj_battler)
-   global.plot=6
-   myinteract=0
-   }
+            <string>if (myinteract == 1 &amp;&amp; global.plot &lt; 6) then
+{
+    global.flag[10] = 0 //spared in previous battle
+    global.flag[11] = 0 //ran away from previous battle
+    global.flag[12] = 0 //fought last battle
+    global.flag[13] = 0 //OTHER
+    global.entrance = 0
+    global.battlegroup = 2
+    obj_mainchara.depth = -600
+    if (instance_exists(obj_battler) == 0) then
+        instance_create(0, 0, obj_battler)
+    global.plot = 6
+    myinteract = 0
+}
 script_execute(scr_depth)
+
 </string>
           </argument>
         </arguments>
@@ -107,7 +109,8 @@ script_execute(scr_depth)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if global.flag[14]=1 then instance_destroy()
+            <string>if (global.flag[14] == 1) then
+    instance_destroy()
 </string>
           </argument>
         </arguments>

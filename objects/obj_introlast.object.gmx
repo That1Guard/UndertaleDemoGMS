@@ -25,11 +25,11 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>h=10
-go=0
-alarm[0]=150
-alarm[2]=20
-visible=0
+            <string>h = 10
+go = 0
+alarm[0] = 150
+alarm[2] = 20
+visible = false
 </string>
           </argument>
         </arguments>
@@ -52,7 +52,7 @@ visible=0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>visible=1
+            <string>visible = true
 </string>
           </argument>
         </arguments>
@@ -75,7 +75,7 @@ visible=0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>go=1
+            <string>go = 1
 </string>
           </argument>
         </arguments>
@@ -98,9 +98,11 @@ visible=0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_sprite_part(sprite_index,image_index,0,sprite_height-(h+100),320,sprite_height-h,0,30)
-if go=1 then h+=1
-if h&gt;240 then h-=1
+            <string>draw_sprite_part(sprite_index, image_index, 0, (sprite_height - (h + 100)), 320, (sprite_height - h), 0, 30)
+if (go == 1) then
+    h += 1
+if (h &gt; 240) then
+    h -= 1
 </string>
           </argument>
         </arguments>

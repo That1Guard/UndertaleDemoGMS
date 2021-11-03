@@ -25,17 +25,22 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>global.interact=3
-caster_set_volume(global.currentsong,0)
-alarm[2]=30
-alarm[4]=1
-global.flag[201]=global.kills
-heartdraw=0
-on=0
-clap=0
-depp=-600
-caster_pause(global.currentsong)
-instance_create(0,0,obj_tempblack)
+            <string>global.interact = 3
+alarm[2] = 30
+alarm[4] = 1
+global.flag[201] = global.kills
+heartdraw = 0
+on = 0
+clap = 0
+depp = -600
+claptimer = 2
+if (global.flag[15] == 0)
+{
+    caster_set_volume(global.currentsong, 0)
+    caster_pause(global.currentsong)
+}
+tb = instance_create(0, 0, obj_tempblack)
+
 </string>
           </argument>
         </arguments>
@@ -58,32 +63,42 @@ instance_create(0,0,obj_tempblack)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if on=0
-if heartdraw=1
+            <string>if (on == 0)
 {
-heartdraw=0
-on=1
-clap+=1
+    if (heartdraw == 1)
+    {
+        heartdraw = 0
+        on = 1
+        clap += 1
+    }
 }
-
-if on=0
-if heartdraw=0
+if (on == 0)
 {
-snd_play(snd_noise)
-on=1
-heartdraw=1
+    if (heartdraw == 0)
+    {
+        snd_play(snd_noise)
+        on = 1
+        heartdraw = 1
+    }
 }
-
-on=0
-
-
-if clap&gt;2
-   {
-  instance_create(obj_mainchara.x+5,obj_mainchara.y+17,obj_transheart)
-   heartdraw=0
-    obj_mainchara.depth=100
-   }
-else alarm[4]=2
+on = 0
+if (clap &gt; 2)
+{
+    if (global.battlegroup == 200)
+    {
+        with (tb)
+            instance_destroy()
+        instance_destroy()
+    }
+    else
+    {
+        instance_create((obj_mainchara.x + 5), (obj_mainchara.y + 17), obj_transheart)
+        heartdraw = 0
+        obj_mainchara.depth = 100
+    }
+}
+else
+    alarm[4] = claptimer
 </string>
           </argument>
         </arguments>
@@ -106,11 +121,11 @@ else alarm[4]=2
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>global.currentroom=room
-room_persistent=true
-instance_create(0,0,obj_fader)
+            <string>global.currentroom = room
+if (room != room_water_undynehouse) then
+    room_persistent = true
+instance_create(0, 0, obj_fader)
 room_goto(room_battle)
-
 </string>
           </argument>
         </arguments>
@@ -133,7 +148,7 @@ room_goto(room_battle)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>alarm[3]=2
+            <string>alarm[3] = 2
 </string>
           </argument>
         </arguments>
@@ -179,11 +194,10 @@ room_goto(room_battle)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if clap&lt;3 then obj_mainchara.depth=depp
-if heartdraw=1 then
- {
- draw_sprite(spr_heartsmall,0,obj_mainchara.x+5,obj_mainchara.y+17)
- }
+            <string>if (clap &lt; 3) then
+    obj_mainchara.depth = depp
+if (heartdraw == 1) then
+    draw_sprite(spr_heartsmall, 0, (obj_mainchara.x + 5), (obj_mainchara.y + 17))
 </string>
           </argument>
         </arguments>

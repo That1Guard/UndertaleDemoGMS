@@ -65,9 +65,10 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>keyboard_set_map(ord("Z"),vk_enter)
-keyboard_set_map(ord("X"),vk_shift)
-keyboard_set_map(ord("C"),vk_control)
+            <string>keyboard_set_map(ord("Z"), vk_return)
+keyboard_set_map(ord("X"), vk_shift)
+keyboard_set_map(ord("C"), vk_control)
+messed = 0
 </string>
           </argument>
         </arguments>
@@ -90,7 +91,26 @@ keyboard_set_map(ord("C"),vk_control)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if global.inbattle=0 then script_execute(scr_end)
+            <string>if (global.inbattle == 0 &amp;&amp; global.flag[18] == 0)
+    script_execute(scr_end)
+if (messed == 1)
+    window_set_caption("Floweytale")
+if (messed == 2)
+    window_set_caption(" ")
+if (messed == 3)
+{
+    str_r = ""
+    repeat floor((2 + random(15)))
+    {
+        ir = choose(0, 1)
+        if (ir == 0)
+            str_piece = choose("a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", " ", " ")
+        if (ir == 1)
+            str_piece = choose("m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", " ", " ")
+        str_r += str_piece
+    }
+    window_set_caption(str_r)
+}
 </string>
           </argument>
         </arguments>
@@ -113,7 +133,8 @@ keyboard_set_map(ord("C"),vk_control)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if global.inbattle=0 then script_execute(scr_begin)
+            <string>if (global.inbattle == 0 &amp;&amp; global.flag[18] == 0) then
+    script_execute(scr_begin)
 </string>
           </argument>
         </arguments>
@@ -136,7 +157,10 @@ keyboard_set_map(ord("C"),vk_control)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>room_caption = "UnderTale Demo";
+            <string>window_set_caption("UNDERTALE DEMO")
+//if (room == room_fire_operatest)
+//    window_set_caption("UNDERTALE the Musical DEMO")
+
 </string>
           </argument>
         </arguments>

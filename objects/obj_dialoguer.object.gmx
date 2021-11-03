@@ -25,32 +25,37 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>global.facechange=0
-xx=view_xview[view_current]
-yy=view_yview[view_current]
-//xx=round(xx)
-//yy=round(yy)
-if instance_exists (obj_mainchara)
-if obj_mainchara.y &gt; yy+130 then 
+            <string>count = 0
+side = 0
+global.facechange = 1
+xx = view_xview[view_current]
+yy = view_yview[view_current]
+if instance_exists(obj_mainchara)
+{
+    if (obj_mainchara.y &gt; (yy + 130))
     {
-     if global.facechoice != 0 then
-     {
-     writer = instance_create(xx+68,yy-5,OBJ_WRITER)
-     script_execute(scr_facechoice)
-     }
-    else
-     writer = instance_create(xx+10,yy-5,OBJ_WRITER)
+        side = 0
+        if (global.facechoice != 0)
+        {
+            writer = instance_create((xx + 68), (yy - 5), OBJ_WRITER)
+            script_execute(scr_facechoice)
+        }
+        else
+            writer = instance_create((xx + 10), (yy - 5), OBJ_WRITER)
     }
-  else
+    else
     {
-    if global.facechoice != 0 then
-     {
-     writer = instance_create(xx+68,yy+150,OBJ_WRITER)
-     script_execute(scr_facechoice)
-     }
-    else
-    writer = instance_create(xx+10,yy+150,OBJ_WRITER)
+        side = 1
+        if (global.facechoice != 0)
+        {
+            writer = instance_create((xx + 68), (yy + 150), OBJ_WRITER)
+            script_execute(scr_facechoice)
+        }
+        else
+            writer = instance_create((xx + 10), (yy + 150), OBJ_WRITER)
     }
+}
+
 </string>
           </argument>
         </arguments>
@@ -73,10 +78,12 @@ if obj_mainchara.y &gt; yy+130 then
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>while instance_exists(obj_face) = true
+            <string>if (instance_exists(obj_face) == 1) then
 {
-  with obj_face instance_destroy()
+    with (obj_face)
+        instance_destroy()
 }
+
 </string>
           </argument>
         </arguments>
@@ -99,34 +106,90 @@ if obj_mainchara.y &gt; yy+130 then
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if instance_exists(writer) = false then instance_destroy()
-else
-if keyboard_check_pressed(vk_shift)  then
+            <string>if (instance_exists(writer) == 0)
+    instance_destroy()
+else if keyboard_multicheck_pressed(1)
 {
-if writer.halt=0
-if global.typer!=10
-writer.stringpos = string_length(writer.originalstring)
-keyboard_clear(vk_shift)
-}
-
-if global.facechange=1 and global.facechoice=0 then
-   {
-      writer.x=xx+30
-     writer.writingx=writer.x
-     while instance_exists(obj_face) = true
-     {
-      with obj_face instance_destroy()
-     }
-     global.facechange=0
-   }
-
-if global.facechange=1
+    if (writer.halt == false)
     {
-     writer.x=xx+68
-     writer.writingx=(writer.x+20)
-     script_execute(scr_facechoice)
-     global.facechange=0 
+        if (global.typer != 10)
+        {
+            global.flag[25] += 1
+            writer.stringpos = string_length(writer.originalstring)
+        }
     }
+    keyboard_clear(vk_shift)
+}
+if (global.facechange == 2)
+    global.facechange = 0
+if (global.facechange == 1 &amp;&amp; global.facechoice == 0)
+{
+    if instance_exists(writer)
+    {
+        writer.x = (xx + 30)
+        writer.writingx = writer.x
+    }
+    if (instance_exists(obj_face) == 1)
+    {
+        with (obj_face)
+            instance_destroy()
+    }
+    global.facechange = 2
+}
+if (global.facechange == 1)
+{
+    if instance_exists(writer)
+    {
+        writer.x = (xx + 68)
+        writer.writingx = (writer.x + 20)
+        if (global.facechoice == 1)
+        {
+            if ((!instance_exists(obj_face_torieltalk)) &amp;&amp; (!instance_exists(obj_face_torielblink)))
+                script_execute(scr_facechoice)
+        }
+        if (global.facechoice == 2)
+        {
+            if (!instance_exists(obj_face_floweytalk))
+                script_execute(scr_facechoice)
+        }
+        if (global.facechoice == 3)
+        {
+            if (!instance_exists(obj_face_sans))
+                script_execute(scr_facechoice)
+        }
+        if (global.facechoice == 4)
+        {
+            if (!instance_exists(obj_face_papyrus))
+                script_execute(scr_facechoice)
+        }
+        if (global.facechoice == 5)
+        {
+            if (!instance_exists(obj_face_undyne))
+                script_execute(scr_facechoice)
+        }
+        if (global.facechoice == 6)
+        {
+            if (!instance_exists(obj_face_alphys))
+                script_execute(scr_facechoice)
+        }
+        if (global.facechoice == 7)
+        {
+            if (!instance_exists(obj_face_asgore))
+                script_execute(scr_facechoice)
+        }
+        if (global.facechoice == 8)
+        {
+            if (!instance_exists(obj_face_mettaton))
+                script_execute(scr_facechoice)
+        }
+        if (global.facechoice == 9)
+        {
+            if (!instance_exists(obj_face_asriel))
+                script_execute(scr_facechoice)
+        }
+        global.facechange = 2
+    }
+}
 </string>
           </argument>
         </arguments>
@@ -149,23 +212,43 @@ if global.facechange=1
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if instance_exists (obj_mainchara)
-if obj_mainchara.y &gt; yy+130 then 
+            <string>if (side == 0)
 {
-draw_set_color(c_white)
-draw_rectangle(view_xview[view_current]+16,view_yview[view_current]+5,view_xview[view_current]+304,view_yview[view_current]+80,false)
-
-draw_set_color(c_black)
-draw_rectangle(view_xview[view_current]+19,view_yview[view_current]+8,view_xview[view_current]+301,view_yview[view_current]+77,false)
+    yy = view_yview[view_current]
+    if instance_exists(writer)
+    {
+        if (writer.writingy &gt; (yy + 80))
+            writer.writingy -= 155
+    }
+    if instance_exists(obj_face)
+    {
+        if (obj_face.y &gt; (yy + 80))
+            obj_face.y -= 155
+    }
+    draw_set_color(c_white)
+    draw_rectangle((view_xview[view_current] + 16), (view_yview[view_current] + 5), (view_xview[view_current] + 304), (view_yview[view_current] + 80), false)
+    draw_set_color(c_black)
+    draw_rectangle((view_xview[view_current] + 19), (view_yview[view_current] + 8), (view_xview[view_current] + 301), (view_yview[view_current] + 77), false)
 }
 else
 {
-draw_set_color(c_white)
-draw_rectangle(view_xview[view_current]+16,view_yview[view_current]+160,view_xview[view_current]+304,view_yview[view_current]+235,false)
-
-draw_set_color(c_black)
-draw_rectangle(view_xview[view_current]+19,view_yview[view_current]+163,view_xview[view_current]+301,view_yview[view_current]+232,false)
+    yy = view_yview[view_current]
+    if instance_exists(writer)
+    {
+        if (writer.writingy &lt; (yy + 80))
+            writer.writingy += 155
+    }
+    if instance_exists(obj_face)
+    {
+        if (obj_face.y &lt; (yy + 80))
+            obj_face.y += 155
+    }
+    draw_set_color(c_white)
+    draw_rectangle((view_xview[view_current] + 16), (view_yview[view_current] + 160), (view_xview[view_current] + 304), (view_yview[view_current] + 235), false)
+    draw_set_color(c_black)
+    draw_rectangle((view_xview[view_current] + 19), (view_yview[view_current] + 163), (view_xview[view_current] + 301), (view_yview[view_current] + 232), false)
 }
+count = 1
 </string>
           </argument>
         </arguments>

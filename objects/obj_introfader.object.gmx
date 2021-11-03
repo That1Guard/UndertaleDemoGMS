@@ -122,9 +122,11 @@ over = 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_alpha-=0.1
-if image_alpha&lt;=0.2 then instance_destroy()
-alarm[3]=2
+            <string>image_alpha -= 0.1
+if (image_alpha &lt;= 0.2) then
+    instance_destroy()
+alarm[3] = 2
+
 </string>
           </argument>
         </arguments>
@@ -147,8 +149,8 @@ alarm[3]=2
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>alarm[3]=2
-obj_introimage.image_index+=1
+            <string>alarm[3] = 2
+obj_introimage.image_index += 1
 </string>
           </argument>
         </arguments>
@@ -171,11 +173,12 @@ obj_introimage.image_index+=1
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if image_alpha&lt;=0.90 and over=0 then image_alpha += tspeed
-if image_alpha&gt;0.90 and over=0 then
+            <string>if (image_alpha &lt;= 0.9 &amp;&amp; over == 0) then
+    image_alpha += tspeed
+if (image_alpha &gt; 0.9 &amp;&amp; over == 0) then
 {
-over=1
-alarm[2]=4
+    over = 1
+    alarm[2] = 4
 }
 
 </string>

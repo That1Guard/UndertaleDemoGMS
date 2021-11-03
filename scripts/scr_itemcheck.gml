@@ -1,6 +1,11 @@
 //argument0 = what's the item
-haveit=0
-for (i=0; i<8; i+=1)
-  {
-  if global.item[i]=argument0 then haveit=1
-  }
+haveit = false
+itemcount = 0
+for (i = 0; i < 8; i += 1)
+{
+    if (global.item[i] == argument0)
+        haveit = true
+    if (global.item[i] == argument0)
+        itemcount += 1
+}
+

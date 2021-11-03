@@ -29,7 +29,7 @@
           </argument>
           <argument>
             <kind>0</kind>
-            <string>room_width*2</string>
+            <string>room_width*3</string>
           </argument>
         </arguments>
       </action>
@@ -123,8 +123,8 @@ over = 1
           <argument>
             <kind>1</kind>
             <string>image_alpha += tspeed
-
-if image_alpha &lt; 0.02 then instance_destroy()
+if (image_alpha &lt; 0.02) then
+    instance_destroy()
 </string>
           </argument>
         </arguments>
