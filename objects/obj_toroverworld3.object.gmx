@@ -26,7 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>script_execute(scr_depth)
-depth+=50
+depth += 50
 </string>
           </argument>
         </arguments>
@@ -49,33 +49,39 @@ depth+=50
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if phone!=2 then
+            <string>if (phone != 2)
 {
-if instance_exists(obj_torface) then
-  {
-  myinteract=1
-  if instance_exists(obj_face_torieltalk) image_index = obj_face_torieltalk.image_index
-  else image_index=0
-  } 
- else
-     {
-    myinteract=0
-    if path_position = 1 then 
-       {
-       image_index=0
-       image_speed=0
-       }
-      else
-      if path_speed !=0 image_speed=0.20
-      if speed&gt;0 then image_speed=0.2
-     }  
- 
-      script_execute(scr_npcdir)
-     if phone=1 then sprite_index=spr_toriel_d_phone
-     
+    if instance_exists(obj_torface)
+    {
+        myinteract = 1
+        if instance_exists(obj_face_torieltalk)
+            image_index = obj_face_torieltalk.image_index
+        else
+            image_index = 0
+    }
+    else
+    {
+        myinteract = 0
+        if (path_position == 1)
+        {
+            image_index = 0
+            image_speed = 0
+        }
+        else if (path_speed != 0)
+            image_speed = 0.2
+        if (speed &gt; 0)
+            image_speed = 0.2
+    }
+    scr_npcdir(0)
+    if (phone == 1)
+        sprite_index = spr_toriel_d_phone
 }
-
-if sprite_index=spr_toriel_hug and image_index&gt;=2 then { image_speed=0; sprite_index=spr_toriel_hug2; dsprite=spr_toriel_hug2; }
+if (sprite_index == spr_toriel_hug &amp;&amp; image_index &gt;= 2)
+{
+    image_speed = 0
+    sprite_index = spr_toriel_hug2
+    dsprite = spr_toriel_hug2
+}
 </string>
           </argument>
         </arguments>
@@ -114,7 +120,13 @@ if sprite_index=spr_toriel_hug and image_index&gt;=2 then { image_speed=0; sprit
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if sprite_index=spr_toriel_hug3 then {obj_mainchara.visible=1; image_speed=0; sprite_index=spr_toriel_d; dsprite=spr_toriel_d}
+            <string>if (sprite_index == spr_toriel_hug3) then
+{
+    obj_mainchara.visible = true
+    image_speed = 0
+    sprite_index = spr_toriel_d
+    dsprite = spr_toriel_d
+}
 </string>
           </argument>
         </arguments>
@@ -137,8 +149,13 @@ if sprite_index=spr_toriel_hug and image_index&gt;=2 then { image_speed=0; sprit
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if room!=room_basement4 then {direction=270; if global.plot&gt;2  then instance_destroy(); }
-donk=0
+            <string>if (room != room_basement4) then
+{
+    direction = 270
+    if (global.plot &gt; 2) then
+        instance_destroy()
+}
+donk = 0
 </string>
           </argument>
         </arguments>

@@ -65,8 +65,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>t=0
-image_speed=0
+            <string>t = 0
+image_speed = 0
 dsprite = spr_toriel_d
 usprite = spr_toriel_u
 lsprite = spr_toriel_l
@@ -75,12 +75,14 @@ dtsprite = spr_toriel_dt
 utsprite = spr_toriel_ut
 ltsprite = spr_toriel_lt
 rtsprite = spr_toriel_rt
-myinteract=0
-facing=3
-conversation=0
-direction=270
-path_start(path_torielwalk1,0,0,true)
-if global.plot &gt; 1 then instance_destroy()
+myinteract = 0
+facing = 3
+conversation = 0
+direction = 270
+path_start(path_torielwalk1, 0, path_action_stop, 1)
+if (global.plot &gt; 1) then
+    instance_destroy()
+
 </string>
           </argument>
         </arguments>
@@ -103,13 +105,13 @@ if global.plot &gt; 1 then instance_destroy()
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if obj_mainchara.y &gt; y+80 then 
+            <string>if (obj_mainchara.y &gt; (y + 80))
 {
-path_speed = 0
-direction=270
-image_speed=0
-image_index=0
-t=0
+    path_speed = 0
+    direction = 270
+    image_speed = 0
+    image_index = 0
+    t = 0
 }
 </string>
           </argument>
@@ -173,24 +175,26 @@ t=0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if obj_mainchara.y &gt; y+80 then 
+            <string>if (obj_mainchara.y &gt; (y + 80)) then
 {
-if t=0 then
-  {
-  alarm[5]= 30
-  t=1
-  }
+    if (t == 0)
+    {
+        alarm[5] = 30
+        t = 1
+    }
 }
-else 
+else
 {
-alarm[5]= 24
-path_speed=2
-if obj_mainchara.y &lt; y+65 then path_speed=3
-if obj_mainchara.y &lt; y+50 then path_speed=4
-image_speed=0.2
+    alarm[5] = 24
+    path_speed = 2
+    if (obj_mainchara.y &lt; (y + 65)) then
+        path_speed = 3
+    if (obj_mainchara.y &lt; (y + 50)) then
+        path_speed = 4
+    image_speed = 0.2
 }
+scr_npcdir(0)
 
-script_execute(scr_npcdir)
 </string>
           </argument>
         </arguments>
@@ -213,9 +217,9 @@ script_execute(scr_npcdir)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>global.plot=2
-instance_create(147,440,obj_stalkerflowey)
-instance_destroy()
+            <string>global.plot = 2;
+instance_create(147, 440, obj_stalkerflowey);
+instance_destroy();
 </string>
           </argument>
         </arguments>

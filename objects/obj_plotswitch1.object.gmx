@@ -25,11 +25,12 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>myinteract=0
-image_speed=0
-on=0
+            <string>myinteract = 0
+image_speed = 0
+on = 0
 script_execute(scr_depth)
-if global.plot&gt;4 then on=1
+if (global.plot &gt; 4) then
+    on = 1
 </string>
           </argument>
         </arguments>
@@ -52,15 +53,14 @@ if global.plot&gt;4 then on=1
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if myinteract=1 and global.plot&lt;=4 then
+            <string>if (myinteract == 1 &amp;&amp; global.plot &lt;= 4)
 {
-on=1
-myinteract=0
-image_index=1
-global.plot=4.5
+    on = 1
+    myinteract = 0
+    image_index = 1
+    global.plot = 4.5
 }
-
-image_index=on
+image_index = on
 </string>
           </argument>
         </arguments>

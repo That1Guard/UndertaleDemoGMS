@@ -25,10 +25,12 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>myinteract=0
-image_xscale=1
-image_yscale=1
+            <string>myinteract = 0
+image_xscale = 1
+image_yscale = 1
 script_execute(scr_depth)
+if (global.flag[6] == 1) then
+    instance_destroy()
 </string>
           </argument>
         </arguments>
@@ -52,12 +54,12 @@ script_execute(scr_depth)
           <argument>
             <kind>1</kind>
             <string>myinteract = 3
-global.msc=0
-global.typer=5
-global.facechoice=0
-global.faceemotion=0
-global.msg[0]="* Please press this switch.&amp; &amp;            - TORIEL/%%"
-mydialoguer = instance_create(0,0,obj_dialoguer)
+global.msc = 0
+global.typer = 5
+global.facechoice = 0
+global.faceemotion = 0
+global.msg[0] = "* Please press this switch.&amp; &amp;            - TORIEL/%%"
+mydialoguer = instance_create(0, 0, obj_dialoguer)
 </string>
           </argument>
         </arguments>

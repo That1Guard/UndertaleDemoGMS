@@ -91,17 +91,6 @@
     <tile bgName="bg_ruinsplaceholder" x="240" y="120" w="20" h="20" xo="40" yo="40" id="10000748" name="tile_AB11728C" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bg_ruinsplaceholder" x="260" y="100" w="20" h="20" xo="40" yo="40" id="10000753" name="tile_B7B55A07" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bg_ruinsplaceholder" x="260" y="120" w="20" h="20" xo="40" yo="40" id="10000754" name="tile_E02A8056" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bg_ruinsplaceholder" x="40" y="-20" w="20" h="20" xo="40" yo="40" id="10000799" name="tile_34DC06F4" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bg_ruinsplaceholder" x="60" y="-20" w="20" h="20" xo="40" yo="40" id="10000801" name="tile_CCFB2CCE" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bg_ruinsplaceholder" x="80" y="-20" w="20" h="20" xo="40" yo="40" id="10000802" name="tile_EAA537B9" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bg_ruinsplaceholder" x="100" y="-20" w="20" h="20" xo="40" yo="40" id="10000803" name="tile_00395C71" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bg_ruinsplaceholder" x="120" y="-20" w="20" h="20" xo="40" yo="40" id="10000804" name="tile_BACBA37F" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bg_ruinsplaceholder" x="140" y="-20" w="20" h="20" xo="40" yo="40" id="10000806" name="tile_03FDA30A" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bg_ruinsplaceholder" x="180" y="-20" w="20" h="20" xo="40" yo="40" id="10000807" name="tile_889EEE83" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bg_ruinsplaceholder" x="160" y="-20" w="20" h="20" xo="40" yo="40" id="10000808" name="tile_8BAA6D30" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bg_ruinsplaceholder" x="200" y="-20" w="20" h="20" xo="40" yo="40" id="10000809" name="tile_DDE447C0" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bg_ruinsplaceholder" x="220" y="-20" w="20" h="20" xo="40" yo="40" id="10000810" name="tile_BDB53104" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="bg_ruinsplaceholder" x="240" y="-20" w="20" h="20" xo="40" yo="40" id="10000811" name="tile_D72559A5" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bg_ruinsplaceholder" x="260" y="80" w="20" h="20" xo="40" yo="40" id="10000821" name="tile_64E93C6B" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bg_ruinsplaceholder" x="600" y="160" w="20" h="20" xo="40" yo="40" id="10000826" name="tile_A2834B42" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bg_ruinsplaceholder2" x="140" y="120" w="20" h="20" xo="60" yo="0" id="10007854" name="tile_C726ABB5" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

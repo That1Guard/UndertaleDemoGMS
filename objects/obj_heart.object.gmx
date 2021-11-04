@@ -98,8 +98,6 @@ if (shot == 1 &amp;&amp; keyboard_multicheck_pressed(0) &amp;&amp; global.mnfigh
         snd_play(snd_heartshot)
     }
 }
-if (sprite_index == spr_confuseheart)
-    image_angle += 6
 if (confuse == 1 &amp;&amp; global.mnfight == 2)
 {
     if (x &lt; (obj_lborder.x + 8))
@@ -242,45 +240,6 @@ if (jumpstage == 2 &amp;&amp; movement == 13)
         hspeed -= 0.5
     if (hspeed &gt;= 4)
         hspeed -= 0.2
-}
-if (ignore_border == 0 &amp;&amp; instance_exists(obj_sansb_body) &amp;&amp; global.mnfight == 2)
-{
-    if (x &lt; (global.idealborder[0] + 4))
-    {
-        x = (global.idealborder[0] + 4)
-        event_user(7)
-        if (hspeed &lt; 0)
-            hspeed = 0
-        if (movement == 13)
-            jumpstage = 1
-    }
-    if (y &lt; (global.idealborder[2] + 4))
-    {
-        y = (global.idealborder[2] + 4)
-        event_user(7)
-        if (vspeed &lt; 0)
-            vspeed = 0
-        if (movement == 12)
-            jumpstage = 1
-    }
-    if (x &gt; (global.idealborder[1] - 16))
-    {
-        x = (global.idealborder[1] - 16)
-        event_user(7)
-        if (hspeed &gt; 0)
-            hspeed = 0
-        if (movement == 11)
-            jumpstage = 1
-    }
-    if (y &gt; (global.idealborder[3] - 16))
-    {
-        y = (global.idealborder[3] - 16)
-        event_user(7)
-        if (vspeed &gt; 0)
-            vspeed = 0
-        if (movement == 2)
-            jumpstage = 1
-    }
 }
 if instance_exists(obj_battlecontroller)
 {

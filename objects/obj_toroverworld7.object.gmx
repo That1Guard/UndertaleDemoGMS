@@ -65,8 +65,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>t=0
-image_speed=0
+            <string>t = 0
+image_speed = 0
 dsprite = spr_toriel_d
 usprite = spr_toriel_u
 lsprite = spr_toriel_l
@@ -75,21 +75,22 @@ dtsprite = spr_toriel_dt
 utsprite = spr_toriel_ut
 ltsprite = spr_toriel_lt
 rtsprite = spr_toriel_rt
-myinteract=0
-facing=0
-conversation=0
-direction=180
-if global.plot&gt;8 then instance_destroy()
-   else
-   {
-   instance_create(0,0,obj_musfadeout)
-   global.typer=4
-   global.facechoice=1
-   global.msc=221
-   instance_create(0,0,obj_dialoguer)
-   global.interact=1
-   conversation=1
-   }
+myinteract = 0
+facing = 0
+conversation = 0
+direction = 180
+if (global.plot &gt; 8)
+    instance_destroy()
+else
+{
+    instance_create(0, 0, obj_musfadeout)
+    global.typer = 4
+    global.facechoice = 1
+    global.msc = 221
+    instance_create(0, 0, obj_dialoguer)
+    global.interact = 1
+    conversation = 1
+}
 
 </string>
           </argument>
@@ -153,21 +154,20 @@ if global.plot&gt;8 then instance_destroy()
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
+            <string>if (instance_exists(obj_dialoguer) == 0 &amp;&amp; conversation == 1)
+{
+    global.interact = 0
+    conversation = 2
+    myinteract = 0
+    path_start(path_walkright, 4, path_action_continue, 0)
+    instance_create(7, 0, obj_plotwall3)
+    image_speed = 0.3
+    global.plot = 8.5
+    global.currentsong = caster_load("music/tension.ogg")
+    caster_loop(global.currentsong, 1, 1)
+}
+scr_npcdir(0)
 
-if instance_exists(obj_dialoguer) = false and conversation=1 then
-   {
-   global.interact=0
-   conversation=2
-   myinteract=0
-   path_start(path_walkright,4,2,false)
-   instance_create(7,0,obj_plotwall3)
-   image_speed=0.3
-   global.plot=8.5
-   global.currentsong=caster_load("music/tension.ogg")
-   caster_loop(global.currentsong,1,1)
-   }
-script_execute(scr_npcdir)
 </string>
           </argument>
         </arguments>

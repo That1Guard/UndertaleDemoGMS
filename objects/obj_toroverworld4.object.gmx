@@ -25,9 +25,11 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if room=room_ruins3 and global.plot&gt;=4 then instance_destroy()
-if global.plot&gt;5.5 then instance_destroy()
-direction=270
+            <string>if (room == room_ruins3 &amp;&amp; global.plot &gt;= 4) then
+    instance_destroy()
+if (global.plot &gt;= 5.5) then
+    instance_destroy()
+direction = 270
 </string>
           </argument>
         </arguments>
