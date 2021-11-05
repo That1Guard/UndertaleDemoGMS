@@ -343,6 +343,28 @@ if (global.mnfight == 0 &amp;&amp; global.myfight == 0)
                     global.talked = -1
                     global.bmenucoord[2] = 0
                     global.bmenuno = (global.bmenucoord[0] + 1)
+                    if instance_exists(obj_talkbt)
+                    {
+                        if (obj_talkbt.spec == 1)
+                        {
+                            if (global.bmenuno == 2)
+                            {
+                                global.rmsg = global.msg[0]
+                                global.mytarget = 0
+                                with (OBJ_WRITER)
+                                    halt = 3
+                                with (OBJ_INSTAWRITER)
+                                    halt = 3
+                                global.bmenuno = 10
+                                global.msc = (1000 + global.monstertype[global.mytarget])
+                                instance_create(global.idealborder[0], global.idealborder[2], OBJ_INSTAWRITER)
+                                keyboard_clear(vk_return)
+                                SCR_TEXT(global.msc)
+                                if (global.choices[global.bmenucoord[2]] == 0)
+                                    global.bmenucoord[2] = 0
+                            }
+                        }
+                    }
                     if (global.bmenuno == 1 || global.bmenuno == 2 || global.bmenuno == 11)
                     {
                         global.msc = 3
@@ -478,6 +500,16 @@ if (global.mnfight == 0 &amp;&amp; global.myfight == 0)
                 global.bmenuno = 2
                 global.typer = 1
                 global.msc = 3
+                if instance_exists(obj_talkbt)
+                {
+                    if (obj_talkbt.spec == 1)
+                    {
+                        global.bmenuno = 0
+                        global.typer = 1
+                        global.msg[0] = global.rmsg
+                        global.msc = 0
+                    }
+                }
                 instance_create(global.idealborder[0], global.idealborder[2], OBJ_INSTAWRITER)
                 keyboard_clear(vk_shift)
             }

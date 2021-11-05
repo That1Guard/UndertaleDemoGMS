@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>visible=0
+            <string>visible = false
 </string>
           </argument>
         </arguments>
@@ -48,11 +48,11 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>obj_mainchara.image_alpha=1
-obj_mainchara.vspeed=0
-global.interact=0
-global.phasing=0
-obj_solidparent.solid=1
+            <string>obj_mainchara.image_alpha = 1
+obj_mainchara.vspeed = 0
+global.interact = 0
+global.phasing = 0
+obj_solidparent.solid = 1
 </string>
           </argument>
         </arguments>
@@ -75,11 +75,12 @@ obj_solidparent.solid=1
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if global.phasing=1 then
+            <string>if (global.phasing == 1)
 {
-global.facing+=1
-if global.facing&gt;3 then global.facing=0
-alarm[1]=4
+    global.facing += 1
+    if (global.facing &gt; 3)
+        global.facing = 0
+    alarm[1] = 4
 }
 </string>
           </argument>
@@ -103,12 +104,13 @@ alarm[1]=4
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>global.facing=0
-obj_mainchara.image_alpha=0.5
-obj_mainchara.vspeed=5
-obj_solidparent.solid=0
-alarm[2]=81
-alarm[1]=4
+            <string>global.facing = 0
+obj_mainchara.image_alpha = 0.5
+obj_mainchara.vspeed = 5
+obj_solidparent.solid = 0
+alarm[2] = 81
+alarm[1] = 4
+snd_play(snd_fall2)
 </string>
           </argument>
         </arguments>
@@ -131,22 +133,32 @@ alarm[1]=4
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if global.phasing=0 then
+            <string>if (global.phasing == 0 &amp;&amp; global.interact == 0)
 {
-global.interact=4
-global.phasing=1
-alarm[0]=10
-instance_create(other.x,other.y+20,obj_cosmetichole)
-if instance_number(obj_cosmetichole)&gt;10 and room=room_ruins10 then 
-{
-obj_cosmetichole.destroyme=1
-global.interact=0
-global.phasing=0
-instance_destroy()
+    global.interact = 4
+    global.phasing = 1
+    alarm[0] = 10
+    ns = 1
+    instance_create(other.x, (other.y + 20), obj_cosmetichole)
+    if (instance_number(obj_cosmetichole) &gt; 10 &amp;&amp; room == room_ruins10)
+    {
+        ns = 0
+        snd_play(snd_hero)
+        with (obj_cosmetichole)
+            destroyme = 1
+        global.interact = 0
+        global.phasing = 0
+        instance_destroy()
+    }
+    if (instance_number(obj_cosmetichole) &gt;= 1000)
+    {
+        with (obj_cosmetichole)
+            destroyme = 1
+        instance_create(other.x, (other.y + 20), obj_cosmetichole)
+    }
+    if (ns == 1)
+        snd_play(snd_noise)
 }
-}
-
-
 </string>
           </argument>
         </arguments>

@@ -266,7 +266,7 @@ if (global.interact == 5)
                 global.menuno = -1
                 global.interact = 0
                 global.menucoord[4] = 0
-                keyboard_clear(vk_return)
+                keyboard_clear(vk_enter)
             }
         }
         if (keyboard_check_pressed(vk_left) || keyboard_check_pressed(vk_right))
@@ -286,14 +286,14 @@ if (global.interact == 5)
             snd_play(snd_save)
             script_execute(scr_save)
             global.menucoord[4] = 2
-            keyboard_clear(vk_return)
+            keyboard_clear(vk_enter)
         }
         if (keyboard_multicheck_pressed(13) &amp;&amp; global.menucoord[4] == 1)
         {
             global.menuno = -1
             global.interact = 0
             global.menucoord[4] = 0
-            keyboard_clear(vk_return)
+            keyboard_clear(vk_enter)
         }
         if keyboard_multicheck_pressed(16)
         {

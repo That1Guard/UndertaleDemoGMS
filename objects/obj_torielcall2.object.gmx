@@ -25,8 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_yscale=400
-if global.plot&gt;9.3 then instance_destroy()
+            <string>image_yscale = 400
+if (global.plot &gt; 9.3)
+    instance_destroy()
 </string>
           </argument>
         </arguments>
@@ -49,14 +50,14 @@ if global.plot&gt;9.3 then instance_destroy()
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if global.plot&gt;9.3 then instance_destroy()
-else
-if global.interact=1 and instance_exists(obj_dialoguer)=false then
-   {
-   global.plot=9.4
-   global.interact=0
-   instance_destroy()
-   }
+            <string>if (global.plot &gt; 9.3)
+    instance_destroy()
+else if (global.interact == 1 &amp;&amp; instance_exists(obj_dialoguer) == 0)
+{
+    global.plot = 9.4
+    global.interact = 0
+    instance_destroy()
+}
 </string>
           </argument>
         </arguments>
@@ -79,14 +80,21 @@ if global.interact=1 and instance_exists(obj_dialoguer)=false then
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>snd_play(snd_phone)
-global.typer=5
-global.facechoice=0
-global.faceemotion=0
-script_execute(scr_writetext,222,"x")
-global.interact=1
-
-
+            <string>if (global.interact == 0)
+{
+    snd_play(snd_phone)
+    global.typer = 5
+    global.facechoice = 0
+    global.faceemotion = 0
+    ini_open("undertale.ini")
+    bs = ini_read_real("Toriel", "Bscotch", 0)
+    ini_close()
+    if (bs == 0)
+        script_execute(scr_writetext, 222, "x", 0, 0)
+    else
+        script_execute(scr_writetext, 831, "x", 0, 0)
+    global.interact = 1
+}
 </string>
           </argument>
         </arguments>

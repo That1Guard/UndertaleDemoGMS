@@ -25,11 +25,18 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>myinteract=0
-read=0
-image_xscale=1
-image_yscale=1
-if global.plot = 0 then instance_destroy()
+            <string>myinteract = 0
+read = 0
+specialread = 0
+cantalk = 1
+mydialoguer = 438274832
+image_xscale = 1
+image_yscale = 1
+if (room &lt; room_basement3)
+{
+    if (global.plot == 0)
+        instance_destroy()
+}
 </string>
           </argument>
         </arguments>
@@ -53,42 +60,77 @@ if global.plot = 0 then instance_destroy()
           <argument>
             <kind>1</kind>
             <string>myinteract = 3
-global.msc=0
-global.typer=5
-global.facechoice=0
-global.faceemotion=0
-global.msg[0]="%%"
-if room=room_ruins2 then global.msg[0]="* Only the fearless may proceed.&amp;* Brave ones, foolish ones.&amp;* Both walk not the middle road./%%"
-if room=room_ruins3 then global.msg[0]="* Stay on the path./%%"
-if room=room_ruins5 then global.msg[0]="* The western room is the&amp;  eastern room's blueprint./%%"
-if room=room_ruins9 then global.msg[0]="* Three out of four grey rocks&amp;  recommend you push them./%%"
-if room=room_ruins14 then global.msg[0]="* There is just one switch./%%"
-if room=room_ruins15A then global.msg[0]="* The far door is not an exit^1.&amp;* It simply marks a change&amp;  in perspective./%%"
-if room=room_ruins15B then global.msg[0]="* If you can read this^1,&amp;  press the blue switch./%%"
-if room=room_ruins15C then global.msg[0]="* If you can read this^1,&amp;  press the red switch./%%"
-if room=room_ruins15D then global.msg[0]="* If you can read this^1,&amp;  press the green switch./%%"
-if room=room_torhouse1 then global.msg[0]='* These books are worn...&amp;* They must have been read&amp;  many times./%%'
-if room=room_torhouse2 then global.msg[0]="* The ends of the tools have&amp;  been filed down to&amp;  make them safer./%%"
-if room=room_asrielroom then global.msg[0]="* Look at these cool toys^2!&amp;* They don't interest you&amp;  at all./%%"
-if room=room_torielroom then
-    { 
-    global.msc=524
-    if x&gt;192 then 
-           { global.msc=0;
-             global.msg[0]="* You peek inside..^2.&amp;* Scandalous!/"
-             global.msg[1]="* It's TORIEL's sock drawer./%%"
-             if read&gt;0 then global.msg[0]="* You can't stop looking&amp;  at the socks./%%"
-             }
+global.msc = 0
+global.typer = 5
+global.facechoice = 0
+global.faceemotion = 0
+global.msg[0] = "%%"
+if (room == room_ruins2)
+    global.msg[0] = "* Only the fearless may proceed.&amp;* Brave ones, foolish ones.&amp;* Both walk not the middle road./%%"
+if (room == room_ruins3)
+    global.msg[0] = "* Stay on the path./%%"
+if (room == room_ruins5)
+    global.msg[0] = "* The western room is the&amp;  eastern room's blueprint./%%"
+if (room == room_ruins9)
+    global.msg[0] = "* Three out of four grey rocks&amp;  recommend you push them./%%"
+if (room == room_ruins13)
+    global.msg[0] = "* (There's an ant-sized frog in&amp;  a crack in the wall...^1)&amp;* (It waves at you.)/%%"
+if (room == room_ruins14)
+    global.msg[0] = "* There is just one switch./%%"
+if (room == room_ruins15A)
+    global.msg[0] = "* The far door is not an exit^1.&amp;* It simply marks a rotation&amp;  in perspective./%%"
+if (room == room_ruins15B)
+    global.msg[0] = "* If you can read this^1,&amp;  press the blue switch./%%"
+if (room == room_ruins15C)
+    global.msg[0] = "* If you can read this^1,&amp;  press the red switch./%%"
+if (room == room_ruins15D)
+    global.msg[0] = "* If you can read this^1,&amp;  press the green switch./%%"
+if (room == room_torhouse1)
+    global.msg[0] = "* These books are worn...&amp;* They must have been read&amp;  many times./%%"
+if (room == room_torhouse2)
+    global.msg[0] = "* The ends of the tools have&amp;  been filed down to&amp;  make them safer./%%"
+if (room == room_asrielroom)
+    global.msg[0] = "* Look at these cool toys^2!&amp;* They don't interest you&amp;  at all./%%"
+if (room == room_torielroom)
+{
+    global.msc = 524
+    if (x &gt; 192)
+    {
+        global.msc = 0
+        global.msg[0] = "* You peek inside..^2.&amp;* Scandalous!/"
+        global.msg[1] = "* It's TORIEL's sock&amp;  collection./%%"
+        if (read &gt; 0)
+            global.msg[0] = "* You can't stop looking&amp;  at the socks./%%"
+        if (global.flag[7] == 1)
+        {
+            global.msg[0] = "* (You came all the way&amp;  back here to look at&amp;  Toriel's socks.)/"
+            global.msg[1] = "* (You have great priorities&amp;  in life.)/%%"
+        }
     }
-if room=room_torhouse3 then global.msg[0]='* "Room under renovations."/%%'
-if room=room_kitchen then global.msg[0]="* For some reason^1, there&amp;  is a brand-name chocolate&amp;  bar in the fridge./%%"
-read+=1
-
-//global.msg[0]="* just letting you know.&amp;* WE ARE VERY COOL./"
-//global.msg[1]="* not so sure about that./"
-//global.msg[2]="EVERY MORNING I&amp;SHALL BATHE IN A&amp;SHOWER OF KISSES./%%"
-
-mydialoguer = instance_create(0,0,obj_dialoguer)
+}
+if (room == room_torhouse3)
+    global.msg[0] = "* " + '"' + "Room under renovations." + '"' + "/%%"
+if (room == room_kitchen)
+    global.msg[0] = "* For some reason^1, there&amp;  is a brand-name chocolate&amp;  bar in the fridge./%%"
+if (room == 9999999)
+{
+    global.msg[0] = "* (It's a school report about&amp;  monster funerals.)/"
+    global.msg[1] = "* Monster funerals^1, technically&amp;  speaking^2, are super crap./"
+    global.msg[2] = "* When monsters die^1, their&amp;  bodies turn into dust./"
+    global.msg[3] = "* One time this kid at my school&amp;  went missing for a week and&amp;  everyone thought he was dead.../"
+    global.msg[4] = "* But then he came back!!!/"
+    global.msg[5] = "* Turns out he was visiting his&amp;  girlfriend in Hotland and&amp;  and didn't tell anyone!/"
+    global.msg[6] = "* To be scientific^1, it sucks&amp;  that no one ever knows&amp;  if anyone's dead or alive./"
+    global.msg[7] = "* So yeah^1, what do we do at&amp;  funerals^1, anyway?/"
+    global.msg[8] = "* Professionally speaking:/"
+    global.msg[9] = "* DUH!!!/"
+    global.msg[10] = "* We pour the dust on whatever&amp;  that person liked./"
+    global.msg[11] = "* Then they will live on..^1.&amp;  ... in that object...&amp;  ... symbolically.../"
+    global.msg[12] = "* Uhhh^1, did I reach the page&amp;  minimum yet^1?&amp;* I'm kinda sick of writing./%%"
+}
+read += 1
+if (cantalk == 1)
+    mydialoguer = instance_create(0, 0, obj_dialoguer)
 </string>
           </argument>
         </arguments>

@@ -65,7 +65,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>keyboard_set_map(ord("Z"), vk_return)
+            <string>keyboard_set_map(ord("Z"), vk_enter)
 keyboard_set_map(ord("X"), vk_shift)
 keyboard_set_map(ord("C"), vk_control)
 messed = 0

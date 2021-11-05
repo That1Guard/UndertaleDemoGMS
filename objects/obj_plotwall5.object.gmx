@@ -25,8 +25,10 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_yscale=400
-if obj_goofyrock.x=280 then instance_destroy()
+            <string>phase = 0
+image_yscale = 400
+if (obj_goofyrock.x == 280)
+    instance_destroy()
 </string>
           </argument>
         </arguments>
@@ -49,7 +51,8 @@ if obj_goofyrock.x=280 then instance_destroy()
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if obj_goofyrock.x=280 then instance_destroy()
+            <string>if (obj_goofyrock.x == 280)
+    instance_destroy()
 </string>
           </argument>
         </arguments>

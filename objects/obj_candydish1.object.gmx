@@ -25,10 +25,20 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>myinteract=0
-image_xscale=1
-image_yscale=1
-
+            <string>myinteract = 0
+image_xscale = 1
+image_yscale = 1
+image_speed = 0
+candymade = 0
+if (global.flag[34] &gt; 3)
+{
+    candy = scr_marker(x, (y + 2), spr_candydish2)
+    candy.depth = 900000
+    candy.image_index = 1
+    candy.image_speed = 0
+    sprite_index = spr_candydish2
+    candymade = 1
+}
 </string>
           </argument>
         </arguments>
@@ -52,11 +62,11 @@ image_yscale=1
           <argument>
             <kind>1</kind>
             <string>myinteract = 3
-global.msc=508
-global.typer=5
-global.facechoice=0
-global.faceemotion=0
-mydialoguer = instance_create(0,0,obj_dialoguer)
+global.msc = 508
+global.typer = 5
+global.facechoice = 0
+global.faceemotion = 0
+mydialoguer = instance_create(0, 0, obj_dialoguer)
 </string>
           </argument>
         </arguments>
@@ -119,7 +129,15 @@ mydialoguer = instance_create(0,0,obj_dialoguer)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if global.flag[34]&gt;3 then sprite_index=spr_candydish2
+            <string>if (global.flag[34] &gt; 3 &amp;&amp; candymade == 0)
+{
+    candy = scr_marker(x, (y + 2), spr_candydish2)
+    candy.depth = 900000
+    candy.image_index = 1
+    candy.image_speed = 0
+    sprite_index = spr_candydish2
+    candymade = 1
+}
 </string>
           </argument>
         </arguments>

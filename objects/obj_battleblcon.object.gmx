@@ -25,10 +25,12 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>depth=obj_mainchara.depth
+            <string>depth = obj_mainchara.depth
 snd_play(snd_b)
-alarm[0]=(15 + random(5))
-global.interact=3
+alarm[0] = (15 + random(5))
+global.interact = 3
+if (scr_murderlv() &gt;= 8 &amp;&amp; global.flag[27] == 0)
+    sprite_index = spr_exc_f
 </string>
           </argument>
         </arguments>
@@ -53,7 +55,7 @@ global.interact=3
           </argument>
           <argument>
             <kind>0</kind>
-            <string>obj_mainchara.y-11</string>
+            <string>obj_mainchara.y - 11</string>
           </argument>
         </arguments>
       </action>
@@ -75,20 +77,26 @@ global.interact=3
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>global.flag[10]=0 //spared in previous battle
-global.flag[11]=0 //ran away from previous battle
-global.flag[12]=0 //fought last battle
-global.flag[13]=0 //OTHER
-global.entrance=0
-obj_mainchara.depth=-600
-if instance_exists(obj_battler) = false then instance_create(0,0,obj_battler)
+            <string>global.flag[10] = 0 //spared in previous battle
+global.flag[11] = 0 //ran away from previous battle
+global.flag[12] = 0 //fought last battle
+global.flag[13] = 0 //OTHER
+global.entrance = 0
+obj_mainchara.depth = -600
+battle = 1
+if (battle == 1)
+{
+    if (instance_exists(obj_battler) == 0)
+        instance_create(0, 0, obj_battler)
+}
 instance_destroy()
+
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="3" enumb="0">
+    <event eventtype="3" enumb="2">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -105,7 +113,7 @@ instance_destroy()
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if keyboard_multicheck(2) then event_user(2)
+            <string>action_move_to(obj_mainchara.x, (obj_mainchara.y - 11))
 </string>
           </argument>
         </arguments>
@@ -128,7 +136,7 @@ instance_destroy()
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>global.interact=0
+            <string>global.interact = 0
 instance_destroy()
 </string>
           </argument>

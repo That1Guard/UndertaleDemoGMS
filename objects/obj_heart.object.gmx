@@ -89,15 +89,6 @@ else
     image_speed = 0
 }
 charge -= 1
-if (shot == 1 &amp;&amp; keyboard_multicheck_pressed(0) &amp;&amp; global.mnfight == 2)
-{
-    if (instance_number(obj_heartshot) == 0 || charge &lt; 0)
-    {
-        charge = 14
-        instance_create((x + 4), (y + 2), obj_heartshot)
-        snd_play(snd_heartshot)
-    }
-}
 if (confuse == 1 &amp;&amp; global.mnfight == 2)
 {
     if (x &lt; (obj_lborder.x + 8))
@@ -373,10 +364,20 @@ if instance_exists(obj_battlecontroller)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if movement=1 then
+            <string>if (movement == 1)
 {
-y+=global.sp
-if keyboard_multicheck(vk_shift) = true then y-=(global.sp/2)
+    if (confuse == 0)
+    {
+        y += global.sp
+        if (keyboard_multicheck(16) == 1)
+            y -= (global.sp / 2)
+    }
+    if (confuse == 1 &amp;&amp; y &gt; (global.idealborder[2] + 8))
+    {
+        y -= global.sp
+        if (keyboard_multicheck(16) == 1)
+            y += (global.sp / 2)
+    }
 }
 </string>
           </argument>
@@ -400,10 +401,20 @@ if keyboard_multicheck(vk_shift) = true then y-=(global.sp/2)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if movement=1 then
+            <string>if (movement == 1 || movement == 2)
 {
-x+=global.sp
-if keyboard_multicheck(vk_shift) = true then x-=(global.sp/2)
+    if (confuse == 0)
+    {
+        x += global.sp
+        if (keyboard_multicheck(16) == 1)
+            x -= (global.sp / 2)
+    }
+    if (confuse == 1 &amp;&amp; x &gt; (global.idealborder[0] + 8))
+    {
+        x -= global.sp
+        if (keyboard_multicheck(16) == 1)
+            x += (global.sp / 2)
+    }
 }
 </string>
           </argument>
@@ -427,10 +438,28 @@ if keyboard_multicheck(vk_shift) = true then x-=(global.sp/2)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if movement=1 then
+            <string>if (movement == 1)
 {
-y-=global.sp
-if keyboard_multicheck(vk_shift) = true then y+=(global.sp/2)
+    if (confuse == 0)
+    {
+        y -= global.sp
+        if (keyboard_multicheck(16) == 1)
+            y += (global.sp / 2)
+    }
+    if (confuse == 1 &amp;&amp; y &lt; (global.idealborder[3] - 8))
+    {
+        y += global.sp
+        if (keyboard_multicheck(16) == 1)
+            y -= (global.sp / 2)
+    }
+}
+if (movement == 2)
+{
+    if (jumpstage == 1 &amp;&amp; vspeed == 0)
+    {
+        jumpstage = 2
+        vspeed = -6
+    }
 }
 </string>
           </argument>
@@ -454,10 +483,20 @@ if keyboard_multicheck(vk_shift) = true then y+=(global.sp/2)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if movement=1 then
+            <string>if (movement == 1 || movement == 2)
 {
-x-=global.sp
-if keyboard_multicheck(vk_shift) = true then x+=(global.sp/2)
+    if (confuse == 0)
+    {
+        x -= global.sp
+        if (keyboard_multicheck(16) == 1)
+            x += (global.sp / 2)
+    }
+    if (confuse == 1 &amp;&amp; x &lt; (global.idealborder[1] - 8))
+    {
+        x += global.sp
+        if (keyboard_multicheck(16) == 1)
+            x += (global.sp / 2)
+    }
 }
 </string>
           </argument>

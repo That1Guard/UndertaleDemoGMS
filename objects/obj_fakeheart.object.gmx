@@ -63,7 +63,7 @@ if (obj_time.left == 1)
 {
     if (movement == 1)
     {
-        if (keyboard_multicheck(16) == 1)
+        if (keyboard_multicheck(vk_shift) == 1)
             x -= (global.sp / 2)
         else
             x -= global.sp
@@ -73,7 +73,7 @@ if (obj_time.right == 1)
 {
     if (movement == 1)
     {
-        if (keyboard_multicheck(16) == 1)
+        if (keyboard_multicheck(vk_shift) == 1)
             x += (global.sp / 2)
         else
             x += global.sp
@@ -83,7 +83,7 @@ if (obj_time.up == 1)
 {
     if (movement == 1)
     {
-        if (keyboard_multicheck(16) == 1)
+        if (keyboard_multicheck(vk_shift) == 1)
             y -= (global.sp / 2)
         else
             y -= global.sp
@@ -93,7 +93,7 @@ if (obj_time.down == 1)
 {
     if (movement == 1)
     {
-        if (keyboard_multicheck(16) == 1)
+        if (keyboard_multicheck(vk_shift) == 1)
             y += (global.sp / 2)
         else
             y += global.sp

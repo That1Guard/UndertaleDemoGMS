@@ -25,10 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>alldead=0
-global.encounter=0
-script_execute(scr_steps,90,100,monsterpopulation1,202)
-//script_execute(scr_steps,10,1,10,203)
+            <string>alldead = 0
+global.encounter = 0
+script_execute(scr_steps, 90, 100, 20, 202)
 </string>
           </argument>
         </arguments>
@@ -51,28 +50,53 @@ script_execute(scr_steps,90,100,monsterpopulation1,202)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if global.encounter&gt;steps then
-if global.interact=0
-   {
-   script_execute(scr_steps,120,100,monsterpopulation1,202)
-   //script_execute(scr_steps,10,1,10,203)
-   global.encounter=0
-   battlegroup=random(20)
-   if battlegroup&lt;=4 then global.battlegroup=11
-   if battlegroup&gt;4 then global.battlegroup=12
-   if battlegroup&gt;8 then global.battlegroup=13
-   if battlegroup&gt;12 then global.battlegroup=16
-   if battlegroup&gt;16 then global.battlegroup=17
-   if battlegroup&gt;19 then global.battlegroup=15
-   if alldead=2 then global.battlegroup=19
-   if alldead=1 then
-      {
-      global.battlegroup=19
-      alldead=2
-      }
-   else
-   instance_create(0,0,obj_battleblcon)
-   }
+            <string>if (global.encounter &gt; steps)
+{
+    if (global.interact == 0)
+    {
+        script_execute(scr_steps, 120, 100, 20, 202)
+        if (global.flag[6] == 1)
+            script_execute(scr_steps, 120, 60, 20, 202)
+        global.encounter = 0
+        battlegroup = random(20)
+        if (battlegroup &lt;= 4)
+            global.battlegroup = 11
+        if (battlegroup &gt; 4)
+            global.battlegroup = 12
+        if (battlegroup &gt; 8)
+            global.battlegroup = 13
+        if (battlegroup &gt; 12)
+            global.battlegroup = 16
+        if (battlegroup &gt; 16)
+            global.battlegroup = 17
+        if (battlegroup &gt; 19)
+            global.battlegroup = 15
+        if (global.flag[6] == 1)
+        {
+            if (battlegroup &lt;= 4)
+                global.battlegroup = 128
+            if (battlegroup &gt; 4)
+                global.battlegroup = 129
+            if (battlegroup &gt; 8)
+                global.battlegroup = 130
+            if (battlegroup &gt; 12)
+                global.battlegroup = 121
+            if (battlegroup &gt; 16)
+                global.battlegroup = 124
+            if (battlegroup &gt; 19)
+                global.battlegroup = 132
+        }
+        if (alldead == 2)
+            global.battlegroup = 19
+        if (alldead == 1)
+        {
+            global.battlegroup = 19
+            alldead = 2
+        }
+        else
+            instance_create(0, 0, obj_battleblcon)
+    }
+}
 </string>
           </argument>
         </arguments>

@@ -889,6 +889,7 @@
     <script>scripts\scr_itemremove.gml</script>
     <script>scripts\scr_papcall.gml</script>
     <script>scripts\scr_torcall.gml</script>
+    <script>scripts\scr_marker.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fnt_plain</font>

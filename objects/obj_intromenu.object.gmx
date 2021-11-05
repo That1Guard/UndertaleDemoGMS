@@ -25,38 +25,78 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>selected=65
-charname=""
-naming=3
-selected2=0
-selected3=0
-q=0
-iniread=ini_open("undertale.ini")
-if ini_section_exists("General") then
-    {
-    name=ini_read_string("General","Name","")
-    love=ini_read_real("General","Love",0)
-    time=ini_read_real("General","Time",0)
-    kills=ini_read_real("General","Kills",0)
-    roome=ini_read_real("General","Room",0)
-    ini_close()
-    }
-menusong1=caster_load("music/menu1.ogg")
-menusong2=caster_load("music/menu2.ogg")
-menusong3=caster_load("music/menu3.ogg")
-menusong4=caster_load("music/menu4.ogg")
-
-ini_open("undertale.ini")
-m2=ini_read_real("Flowey","Met1",0)
-m3=ini_read_real("Toriel","TK",0)
-m4=ini_read_real("Toriel","TS",0)
+            <string>siner_o = 0
+selected = 65
+charname = ""
+naming = 3
+selected2 = 0
+selected3 = 0
+q = 0
+name = ""
+iniread = ini_open("undertale.ini")
+if ini_section_exists("General")
+{
+    name = ini_read_string("General", "Name", "")
+    love = ini_read_real("General", "Love", 0)
+    time = ini_read_real("General", "Time", 0)
+    kills = ini_read_real("General", "Kills", 0)
+    roome = ini_read_real("General", "Room", 0)
+}
+hasname = 0
+if (name != "")
+    hasname = 1
+if (hasname == 1)
+    global.charname = name
 ini_close()
-
-m2=file_exists("file0")
-caster_loop(menusong1,0.45,1)
-if m2&gt;0 then caster_loop(menusong2,0.45,1)
-if m3&gt;0 then caster_loop(menusong3,0.6,1)
-if m4&gt;0 then caster_loop(menusong4,0.6,1)
+ini_open("undertale.ini")
+m2 = file_exists("file0")
+m3 = ini_read_real("Toriel", "TK", 0)
+m4 = ini_read_real("Toriel", "TS", 0)
+pd = ini_read_real("Papyrus", "PD", 0)
+ud = ini_read_real("Undyne", "UD", 0)
+ad = ini_read_real("Alphys", "AD", 0)
+fd = ini_read_real("F7", "F7", 0)
+fk = ini_read_real("Flowey", "K", 0)
+truereset = ini_read_real("EndF", "EndF", 0)
+ini_close()
+mlevel = 0
+if (m2 &gt; 0)
+{
+    if (m2 &gt; 0)
+        mlevel = 1
+    if (m4 &gt; 0)
+        mlevel = 2
+    if (pd &gt; 0 &amp;&amp; mlevel == 2)
+        mlevel = 3
+    if (ud &gt; 0 &amp;&amp; mlevel == 3)
+        mlevel = 4
+    if (ad &gt; 0 &amp;&amp; mlevel == 4)
+        mlevel = 5
+    if (fd &gt; 0 &amp;&amp; mlevel == 5)
+        mlevel = 6
+}
+if (truereset &gt; 0)
+    mlevel = 7
+if (mlevel == 0)
+    menusong = mus_menu0
+if (mlevel == 1)
+    menusong = mus_menu1
+if (mlevel == 2)
+    menusong = mus_menu2
+if (mlevel == 3)
+    menusong = mus_menu3
+if (mlevel == 4)
+    menusong = mus_menu4
+if (mlevel == 5)
+    menusong = mus_menu5
+if (mlevel == 6)
+    menusong = mus_menu6
+if (mlevel == 7)
+    menusong = mus_menu0
+if (mlevel &gt;= 0 &amp;&amp; mlevel &lt;= 6)
+    caster_loop(menusong, 0.6, 1)
+if (mlevel == 7)
+    caster_loop(menusong, 0.1, 0.1)
 </string>
           </argument>
         </arguments>
@@ -79,19 +119,25 @@ if m4&gt;0 then caster_loop(menusong4,0.6,1)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if naming=3 then
-   {
-   if m2&gt;0 then draw_background(bg_floweyglow,0,-120)
-   if m3&gt;0 then draw_sprite(spr_flowey,0,190,170)
-   if m4&gt;0 then draw_sprite(spr_chairiel,0,40,150)
-   }
+            <string>siner_o += 1
+if (naming == 3)
+{
+    if (mlevel &gt; 0)
+        draw_background(bg_floweyglow, 0, -120)
+    if (mlevel == 1)
+    {
+        if (fk == 0)
+            draw_sprite(spr_flowey, 0, 147, 169)
+    }
+    if (mlevel == 2) then
+        draw_sprite(spr_chairiel, 0, 125, 138)
+}
 script_execute(scr_namingscreen)
-
-if naming=3 then
-  {
-  draw_set_color(c_gray)
-draw_set_font(fnt_small)
-draw_text(90,232,"UnderTale (C) Toby Fox 2013")
+if (naming == 3)
+{
+    draw_set_color(c_gray)
+    draw_set_font(fnt_small)
+    draw_text(70, 232, "UNDERTALE v1.001 (C) Toby Fox 2015")
 }
 </string>
           </argument>
@@ -115,7 +161,7 @@ draw_text(90,232,"UnderTale (C) Toby Fox 2013")
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>game_end()
+            <string>game_end();
 </string>
           </argument>
         </arguments>

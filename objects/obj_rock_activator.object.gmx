@@ -25,8 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_yscale=400
-if global.plot&gt;12 then instance_destroy()
+            <string>image_yscale = 400
+if (global.plot &gt; 12)
+    instance_destroy()
 </string>
           </argument>
         </arguments>
@@ -49,7 +50,7 @@ if global.plot&gt;12 then instance_destroy()
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_create(380,50,obj_plotwall5)
+            <string>instance_create(380, 50, obj_plotwall5)
 </string>
           </argument>
         </arguments>
@@ -72,7 +73,8 @@ if global.plot&gt;12 then instance_destroy()
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if global.plot&gt;12 then instance_destroy()
+            <string>if (global.plot &gt; 12)
+    instance_destroy()
 </string>
           </argument>
         </arguments>
@@ -95,10 +97,10 @@ if global.plot&gt;12 then instance_destroy()
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if obj_goofyrock.conversation&gt;7 and obj_goofyrock.conversation&lt;10.5 then
+            <string>if (obj_goofyrock.conversation &gt; 7 &amp;&amp; obj_goofyrock.conversation &lt; 10.5)
 {
-obj_goofyrock.conversation=10.5
-alarm[0]=3
+    obj_goofyrock.conversation = 10.5
+    alarm[0] = 3
 }
 </string>
           </argument>

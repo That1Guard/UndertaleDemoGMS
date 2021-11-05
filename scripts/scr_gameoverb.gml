@@ -1,15 +1,6 @@
 global.hp = 0
-if (global.battlegroup == 22)
+if (global.battlegroup == 22) then
     obj_torielboss.sprite_index = spr_torielboss_mouthcover
-if instance_exists(obj_asgoreb)
-{
-    ini_open("undertale.ini")
-    ky = ini_read_real("Asgore", "KillYou", 0)
-    ini_write_real("Asgore", "KillYou", (ky + 1))
-    ini_close()
-}
-if instance_exists(obj_spiderb)
-    global.tempvalue[11] += 1
 ini_open("undertale.ini")
 g_o = ini_read_real("General", "Gameover", 0)
 ini_close()

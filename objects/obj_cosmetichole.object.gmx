@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>destroyme=0
+            <string>destroyme = 0
 </string>
           </argument>
         </arguments>
@@ -48,7 +48,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if destroyme=1 then instance_destroy()
+            <string>if (destroyme == 1)
+    instance_destroy()
 </string>
           </argument>
         </arguments>

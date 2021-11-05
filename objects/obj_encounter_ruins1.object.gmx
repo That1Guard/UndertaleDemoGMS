@@ -25,10 +25,11 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>alldead=0
-global.encounter=0
+            <string>alldead = 0
+global.encounter = 0
+
 //steps, randomized steps, population, population ID
-script_execute(scr_steps,100,40,monsterpopulation1,202)
+script_execute(scr_steps, 80, 40, 20, 202)
 </string>
           </argument>
         </arguments>
@@ -51,23 +52,43 @@ script_execute(scr_steps,100,40,monsterpopulation1,202)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if global.encounter&gt;steps then
-if global.interact=0
-   {
-   script_execute(scr_steps,130,80,monsterpopulation1,202)
-   global.encounter=0
-   battlegroup=random(2)
-   if battlegroup&lt;=1 then global.battlegroup=4
-   if battlegroup&gt;1 then global.battlegroup=5
-   if alldead=2 then global.battlegroup=19
-   if alldead=1 then
-      {
-      global.battlegroup=19
-      alldead=2
-      }
-   else
-   instance_create(0,0,obj_battleblcon)
-   }
+            <string>if (global.encounter &gt; steps)
+{
+    if (global.interact == 0)
+    {
+        script_execute(scr_steps, 190, 80, 20, 202)
+        if (global.flag[6] == 1)
+            script_execute(scr_steps, 100, 60, 20, 202)
+        global.encounter = 0
+        if (global.flag[6] == 0)
+        {
+            battlegroup = random(2)
+            if (battlegroup &lt;= 1)
+                global.battlegroup = 4
+            if (battlegroup &gt; 1)
+                global.battlegroup = 5
+        }
+        else
+        {
+            battlegroup = random(3)
+            if (battlegroup &lt;= 1)
+                global.battlegroup = 126
+            if (battlegroup &gt; 1)
+                global.battlegroup = 125
+            if (battlegroup &gt; 2)
+                global.battlegroup = 120
+        }
+        if (alldead == 2)
+            global.battlegroup = 19
+        if (alldead == 1)
+        {
+            global.battlegroup = 19
+            alldead = 2
+        }
+        else
+            instance_create(0, 0, obj_battleblcon)
+    }
+}
 </string>
           </argument>
         </arguments>

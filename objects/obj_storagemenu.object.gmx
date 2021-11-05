@@ -25,8 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>j=0
-alarm[0]=3
+            <string>j = 0
+alarm[0] = 3
 </string>
           </argument>
         </arguments>
@@ -49,20 +49,17 @@ alarm[0]=3
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if j=1 then
+            <string>if (j == 1)
 {
-global.menuno=6
-          global.interact=5
+    global.menuno = 6
+    global.interact = 5
 }
-if j=2 then
+if (j == 2)
 {
-          global.menuno=7
-          global.interact=5
-          
-          
-          }
-          
-          instance_destroy()
+    global.menuno = 7
+    global.interact = 5
+}
+instance_destroy()
 </string>
           </argument>
         </arguments>

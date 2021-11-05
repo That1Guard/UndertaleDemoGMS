@@ -166,6 +166,4 @@ global.batmusic = -1
 global.typer = 5
 global.msc = 0
 global.hardmode = 0
-file_rename("data/unused/dfb", "data/unused/dfb.png")
-global.background = background_add("data/unused/dfb.png", 0, 1)
-file_rename("data/unused/dfb.png", "data/unused/dfb")
+

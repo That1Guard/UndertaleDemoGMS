@@ -25,8 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed=0.1
-image_alpha=0
+            <string>image_speed = 0.1
+image_alpha = 0
 </string>
           </argument>
         </arguments>
@@ -49,8 +49,17 @@ image_alpha=0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if obj_time.quit&gt;0 then draw_sprite_ext(sprite_index,image_index,view_xview[view_current],view_yview[view_current],1,1,0,c_white,image_alpha) else instance_destroy()
-if image_alpha&lt;0.9 then image_alpha+=0.1
+            <string>if instance_exists(obj_time)
+{
+    if (obj_time.quit &gt; 0)
+        draw_sprite_ext(sprite_index, image_index, view_xview[view_current], view_yview[view_current], 1, 1, 0, c_white, image_alpha)
+    else
+        instance_destroy()
+}
+else
+    instance_destroy()
+if (image_alpha &lt; 0.9) then
+    image_alpha += 0.1
 </string>
           </argument>
         </arguments>

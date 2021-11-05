@@ -3,15 +3,20 @@
 //argument2 = population
 //argument3 = population ID
 
-global.flag[200]=argument3
-if argument2 - global.flag[argument3] > 0 then
+global.flag[200] = argument3
+if ((argument2 - global.flag[argument3]) > 0)
 {
-populationfactor=argument2/(argument2-global.flag[argument3])
-if populationfactor>8 then populationfactor=8
-steps=(argument0+round(random(argument1)))*populationfactor
+    populationfactor = (argument2 / (argument2 - global.flag[argument3]))
+    if (populationfactor > 8)
+        populationfactor = 8
+    steps = ((argument0 + round(random(argument1))) * populationfactor)
 }
 else
-  {  
-  steps=(argument0+argument1)*6
-  if alldead=0 then alldead=1
-  }
+{
+    if (alldead == 0 || alldead == 1)
+        steps = 20
+    else
+        steps = ((argument0 + round((argument1 / 2))) * 5)
+    if (alldead == 0)
+        alldead = 1
+}

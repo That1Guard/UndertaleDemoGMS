@@ -25,11 +25,11 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>obj_mainchara.visible=1
-obj_mainchara.vspeed=0
-global.interact=0
-global.phasing=0
-obj_solidparent.solid=1
+            <string>obj_mainchara.visible = true
+obj_mainchara.vspeed = 0
+global.interact = 0
+global.phasing = 0
+obj_solidparent.solid = 1
 </string>
           </argument>
         </arguments>
@@ -52,11 +52,11 @@ obj_solidparent.solid=1
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>global.facing=0
-obj_mainchara.visible=0
-obj_mainchara.vspeed=-10
-obj_solidparent.solid=0
-alarm[2]=41
+            <string>global.facing = 0
+obj_mainchara.visible = false
+obj_mainchara.vspeed = -10
+obj_solidparent.solid = 0
+alarm[2] = 41
 </string>
           </argument>
         </arguments>
@@ -79,13 +79,12 @@ alarm[2]=41
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if global.phasing=0 then
+            <string>if (global.phasing == 0 &amp;&amp; global.interact == 0)
 {
-global.interact=4
-global.phasing=1
-alarm[0]=10
+    global.interact = 4
+    global.phasing = 1
+    alarm[0] = 10
 }
-
 </string>
           </argument>
         </arguments>
