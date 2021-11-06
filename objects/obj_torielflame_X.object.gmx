@@ -25,13 +25,13 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed=0
-visible=0
-alarm[0]=70
-alarm[1]=100
-flashing=1
-image_xscale=2
-image_yscale=2
+            <string>image_speed = 0
+visible = false
+alarm[0] = 70
+alarm[1] = 100
+flashing = 1
+image_xscale = 2
+image_yscale = 2
 </string>
           </argument>
         </arguments>
@@ -54,10 +54,10 @@ image_yscale=2
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>hspeed=-8
-flashing=0
-visible=1
-image_speed=0.25
+            <string>hspeed = -8
+flashing = 0
+visible = true
+image_speed = 0.25
 </string>
           </argument>
         </arguments>
@@ -80,13 +80,13 @@ image_speed=0.25
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if flashing=1 then
+            <string>if (flashing == 1)
 {
-if visible=1 then visible=0
-else visible=1
-
-alarm[0]=1
-
+    if (visible == true)
+        visible = false
+    else
+        visible = true
+    alarm[0] = 1
 }
 </string>
           </argument>
@@ -110,15 +110,14 @@ alarm[0]=1
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>other.conversation=17
-other.sprite_index=spr_floweyhurt
-instance_destroy()
-
+            <string>other.conversation = 17
+other.sprite_index = spr_floweyhurt
 snd_play(snd_ehurt1)
 global.hshake = 2
 global.shakespeed = 2
 global.vshake = 0
-instance_create(0,0,obj_shaker)
+instance_create(0, 0, obj_shaker)
+instance_destroy()
 </string>
           </argument>
         </arguments>

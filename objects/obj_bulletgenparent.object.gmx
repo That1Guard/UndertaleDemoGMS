@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>firingspeed=global.firingrate
+            <string>firingspeed = global.firingrate
 </string>
           </argument>
         </arguments>
@@ -72,11 +72,11 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if global.turntimer &lt; 1 then
+            <string>if (global.turntimer &lt; 1)
 {
-global.turntimer = -1
-global.mnfight = 3
-instance_destroy()
+    global.turntimer = -1
+    global.mnfight = 3
+    instance_destroy()
 }
 </string>
           </argument>

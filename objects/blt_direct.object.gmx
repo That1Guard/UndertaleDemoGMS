@@ -25,112 +25,22 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>sprite_index=global.bulletappearance
+            <string>sprite_index = global.bulletappearance
 myspeed = global.bulletvariable[0]
-mydirection = global.bulletvariable[6] //direction
-mydirectionalspeed = global.bulletvariable[7] //directionalspeed 
+mydirection = global.bulletvariable[6]
+mydirectionalspeed = global.bulletvariable[7]
 myrandomspeed = global.bulletvariable[1]
 mydirectionrandom = global.bulletvariable[2]
 gravity = global.bulletvariable[3]
 gravity_direction = global.bulletvariable[4]
 friction = global.bulletvariable[5]
-
-instance_create(x+(sprite_width/2-8),y+(sprite_width/2-8),blt_gen)
+instance_create((x + ((sprite_width / 2) - 8)), (y + ((sprite_width / 2) - 8)), blt_gen)
 dmg = 0
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>105</id>
-        <kind>0</kind>
-        <userelative>-1</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>1</exetype>
-        <functionname>action_move_point</functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>0</kind>
-            <string>obj_heart.x</string>
-          </argument>
-          <argument>
-            <kind>0</kind>
-            <string>obj_heart.y</string>
-          </argument>
-          <argument>
-            <kind>0</kind>
-            <string>myspeed + random(myrandomspeed)*2 - myrandomspeed</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>102</id>
-        <kind>0</kind>
-        <userelative>-1</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>1</exetype>
-        <functionname>action_set_motion</functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>-1</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>0</kind>
-            <string>mydirection</string>
-          </argument>
-          <argument>
-            <kind>0</kind>
-            <string>mydirectionalspeed + random(myrandomspeed)*2 - myrandomspeed</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>direction = (direction + (random(mydirectionrandom)*2 - mydirectionrandom))
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if sprite_index = spr_dirbullet then image_speed = 0
+action_move_point(obj_heart.x, obj_heart.y, ((myspeed + (random(myrandomspeed) * 2)) - myrandomspeed))
+action_set_motion(mydirection, ((mydirectionalspeed + (random(myrandomspeed) * 2)) - myrandomspeed))
+direction += ((random(mydirectionrandom) * 2) - mydirectionrandom)
+if (sprite_index == spr_dirbullet)
+    image_speed = 0
 </string>
           </argument>
         </arguments>
@@ -153,10 +63,8 @@ dmg = 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if sprite_index = spr_dirbullet then
-{
-image_index = round(direction/10)
-}
+            <string>if (sprite_index == spr_dirbullet)
+    image_index = round((direction / 10))
 </string>
           </argument>
         </arguments>

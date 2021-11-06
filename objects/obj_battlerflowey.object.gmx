@@ -25,14 +25,14 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>global.interact=3
-alarm[2]=40
-alarm[4]=1
-heartdraw=0
-on=0
-clap=0
-depp=-600
-instance_create(0,0,obj_tempblack)
+            <string>global.interact = 3
+alarm[2] = 40
+alarm[4] = 1
+heartdraw = 0
+on = 0
+clap = 0
+depp = -600
+instance_create(0, 0, obj_tempblack)
 </string>
           </argument>
         </arguments>
@@ -55,32 +55,33 @@ instance_create(0,0,obj_tempblack)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if on=0
-if heartdraw=1
+            <string>if (on == 0)
 {
-heartdraw=0
-on=1
-clap+=1
+    if (heartdraw == 1)
+    {
+        heartdraw = 0
+        on = 1
+        clap += 1
+    }
 }
-
-if on=0
-if heartdraw=0
+if (on == 0)
 {
-snd_play(snd_noise)
-on=1
-heartdraw=1
+    if (heartdraw == 0)
+    {
+        snd_play(snd_noise)
+        on = 1
+        heartdraw = 1
+    }
 }
-
-on=0
-
-
-if clap&gt;2
-   {
-    instance_create(obj_mainchara.x+5,obj_mainchara.y+17,obj_transheart)
-   heartdraw=0
-    obj_mainchara.depth=100
-   }
-else alarm[4]=2
+on = 0
+if (clap &gt; 2)
+{
+    instance_create((obj_mainchara.x + 5), (obj_mainchara.y + 17), obj_transheart)
+    heartdraw = 0
+    obj_mainchara.depth = 100
+}
+else
+    alarm[4] = 2
 </string>
           </argument>
         </arguments>
@@ -103,11 +104,13 @@ else alarm[4]=2
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>global.currentroom=room
-room_persistent=true
-instance_create(0,0,obj_fader)
-room_goto(room_floweybattle)
-
+            <string>global.currentroom = room
+instance_create(0, 0, obj_fader)
+if (room == room_area1_2)
+{
+    room_goto(room_floweybattle)
+    room_persistent = true
+}
 </string>
           </argument>
         </arguments>
@@ -130,7 +133,7 @@ room_goto(room_floweybattle)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>alarm[3]=1
+            <string>alarm[3] = 1
 </string>
           </argument>
         </arguments>
@@ -176,16 +179,17 @@ room_goto(room_floweybattle)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if clap&lt;3 then
+            <string>if (clap &lt; 3) then
 {
-obj_mainchara.depth=depp
-if instance_exists(obj_fader)
-then with obj_fader instance_destroy()
+    obj_mainchara.depth = depp
+    if instance_exists(obj_fader)
+    {
+        with (obj_fader)
+            instance_destroy()
+    }
 }
-if heartdraw=1 then
- {
- draw_sprite(spr_heartsmall,0,obj_mainchara.x+5,obj_mainchara.y+17)
- }
+if (heartdraw == 1) then
+    draw_sprite(spr_heartsmall, 0, (obj_mainchara.x + 5), (obj_mainchara.y + 17))
 </string>
           </argument>
         </arguments>

@@ -1,1 +1,1 @@
-return scr_getmusindex(argument0)
+return scr_getmusindex(argument0);

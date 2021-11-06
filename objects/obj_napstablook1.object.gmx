@@ -25,12 +25,14 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if global.plot&gt;10.5 then instance_destroy()
-myinteract=0
-image_xscale=1
-image_yscale=1
-talkedto=0
-if murdererlv1()=1 and global.plot&lt;10.4 then global.plot=10.4
+            <string>if (global.plot &gt; 10.5)
+    instance_destroy()
+myinteract = 0
+image_xscale = 1
+image_yscale = 1
+talkedto = 0
+if (murdererlv1() == 1 &amp;&amp; global.plot &lt; 10.4)
+    global.plot = 10.4
 </string>
           </argument>
         </arguments>
@@ -53,20 +55,20 @@ if murdererlv1()=1 and global.plot&lt;10.4 then global.plot=10.4
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>   global.interact=1
-   myinteract = 3
-   global.msc=0
-   global.typer=5
-   global.facechoice=0
-   global.faceemotion=0
-   global.msg[0]="* i usually come to the&amp;  RUINS because there's&amp;  nobody around.../"
-   global.msg[1]="* but today i met somebody&amp;  nice.../"
-   global.msg[2]="* .../"
-   global.msg[3]="* oh^1, i'm rambling again/"
-   global.msg[4]="* i'll get out of your way/%%"
-   mydialoguer = instance_create(0,0,obj_dialoguer)
-   global.plot=10.4
-   global.flag[36]=1
+            <string>global.interact = 1
+myinteract = 3
+global.msc = 0
+global.typer = 5
+global.facechoice = 0
+global.faceemotion = 0
+global.msg[0] = "* i usually come to the&amp;  RUINS because there's&amp;  nobody around.../"
+global.msg[1] = "* but today i met somebody&amp;  nice.../"
+global.msg[2] = "* .../"
+global.msg[3] = "* oh^1, i'm rambling again/"
+global.msg[4] = "* i'll get out of your way/%%"
+mydialoguer = instance_create(0, 0, obj_dialoguer)
+global.plot = 10.4
+global.flag[36] = 1
 </string>
           </argument>
         </arguments>
@@ -89,15 +91,15 @@ if murdererlv1()=1 and global.plot&lt;10.4 then global.plot=10.4
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if global.plot&lt;10.2
+            <string>if (global.plot &lt; 10.2)
 {
-myinteract = 3
-global.msc=510
-global.typer=5
-global.facechoice=0
-global.faceemotion=0
-talkedto=1
-mydialoguer = instance_create(0,0,obj_dialoguer)
+    myinteract = 3
+    global.msc = 510
+    global.typer = 5
+    global.facechoice = 0
+    global.faceemotion = 0
+    talkedto = 1
+    mydialoguer = instance_create(0, 0, obj_dialoguer)
 }
 </string>
           </argument>
@@ -161,38 +163,40 @@ mydialoguer = instance_create(0,0,obj_dialoguer)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if talkedto=1 and global.choice=0 and instance_exists(obj_dialoguer)=false then
-   {
-   global.battlegroup=20
-   global.flag[200]=0
-   global.mercy=1
-   instance_create(0,0,obj_battler)
-   talkedto=0
-   }
-
-if global.plot=10.3 then
-   {
-   alarm[4]=2
-   global.plot=10.35
-   }
-
-if global.plot=10.4 and instance_exists(obj_dialoguer)=false then
-   {
-   image_alpha-=0.05
-   if image_alpha&lt;0.10 then
-       {
-       global.plot=11
-       global.interact=0
-       instance_destroy()
-       }
-       
-   }
-   
-if global.plot=11 then
-  {
-  global.mercy=0
-  instance_destroy()
-  }
+            <string>scr_depth(0, 0, 0, 0, 0)
+if (talkedto == 1 &amp;&amp; global.choice == 0 &amp;&amp; instance_exists(obj_dialoguer) == 0)
+{
+    global.battlegroup = 20
+    global.flag[200] = 0
+    global.mercy = 1
+    instance_create(0, 0, obj_battler)
+    talkedto = 0
+}
+if (global.plot == 10.3)
+{
+    alarm[4] = 2
+    global.plot = 10.35
+}
+if (global.plot == 10.4 &amp;&amp; instance_exists(obj_dialoguer) == 0)
+{
+    image_alpha -= 0.05
+    if (image_alpha &lt; 0.1)
+    {
+        with (obj_mainchara)
+            uncan = 0
+        global.plot = 11
+        global.interact = 0
+        instance_destroy()
+    }
+}
+if (global.plot == 11)
+{
+    with (obj_mainchara)
+        uncan = 0
+    global.border = 0
+    global.mercy = 0
+    instance_destroy()
+}
 </string>
           </argument>
         </arguments>

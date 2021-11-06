@@ -1,2 +1,4 @@
-if global.flag[202]>=monsterpopulation1 then return true
-else return false
+if (global.flag[202] >= 20)
+    return 1;
+else
+    return 0;

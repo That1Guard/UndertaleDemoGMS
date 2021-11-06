@@ -9,6 +9,4 @@ global.bulletvariable[7] = argument7 //GOALDIR
 global.bulletvariable[8] = argument8 //GOALSPEED
 global.bulletappearance = argument9
 
-
-
-instance_create(x,y,blt_laser)
+instance_create(x, y, blt_laser)

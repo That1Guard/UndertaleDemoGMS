@@ -35,4 +35,3 @@ murderboy = mrd
 if (global.flag[26] > 0)
     mrd = global.flag[26]
 return mrd;
-

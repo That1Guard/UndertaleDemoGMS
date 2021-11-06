@@ -1,6 +1,11 @@
-roomname="error"
-if argument0=0 then roomname="--"
-if argument0=6 then roomname="Ruins - Entrance"
-if argument0=12 then roomname="Ruins - Leaf Pile"
-if argument0=18 then roomname="Ruins - Mouse Hole"
-if argument0=31 then roomname="Ruins - Home"
+roomname = " "
+if (argument0 == 0)
+    roomname = "--"
+if (argument0 == real(6))
+    roomname = "Ruins - Entrance"
+if (argument0 == real(12))
+    roomname = "Ruins - Leaf Pile"
+if (argument0 == real(18))
+    roomname = "Ruins - Mouse Hole"
+if (argument0 == real(31))
+    roomname = "Ruins - Home"

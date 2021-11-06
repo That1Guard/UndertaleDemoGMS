@@ -1,22 +1,25 @@
 //argument0=id of item we are being given
-i=0
-loop=1
-noroom=0
-global.item[8]=999
-while (loop=1)
-   {
-     if global.item[i]=0 then
-        {
-        global.item[i]=argument0
+i = 0
+loop = 1
+noroom = 0
+global.item[8] = 999
+while (loop == 1)
+{
+    if (global.item[i] == 0)
+    {
+        global.item[i] = argument0
         break
-        }
-     if i=8 then
-        {
+    }
+    else if (i == 8)
+    {
         script_execute(scr_itemnospace)
-        break;
-        }
-        i+=1
-   }
-
+        break
+    }
+    else
+    {
+        i += 1
+        continue
+    }
+}
 script_execute(scr_itemnameb)
 script_execute(scr_itemname)

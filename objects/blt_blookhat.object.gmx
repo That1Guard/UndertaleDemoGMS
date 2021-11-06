@@ -25,11 +25,11 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed=0
-dongle=10
-finished=0
-image_xscale=2
-image_yscale=2
+            <string>image_speed = 0
+dongle = 10
+finished = false
+image_xscale = 2
+image_yscale = 2
 </string>
           </argument>
         </arguments>
@@ -52,12 +52,14 @@ image_yscale=2
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if dongle&lt;1 then
-   {
-   dongle=22
-   if image_index&lt;5 then image_index+=1
-   if image_index=5 then finished=1
-   }
+            <string>if (dongle &lt; 1)
+{
+    dongle = 22
+    if (image_index &lt; 5)
+        image_index += 1
+    if (image_index == 5)
+        finished = true
+}
 </string>
           </argument>
         </arguments>
@@ -80,7 +82,7 @@ image_yscale=2
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>dongle-=1
+            <string>dongle -= 1
 </string>
           </argument>
         </arguments>

@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>&lt;undefined&gt;</parentName>
+  <parentName>obj_musicobjectparent</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -25,18 +25,19 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if caster_is_playing(global.currentsong) != 1 then
+            <string>event_user(0)
+if (caster_is_playing(global.currentsong) != 1)
 {
-if global.flag[221]=0 then
-  {
-  global.currentsong=caster_load("music/ruins.ogg")
-  caster_loop(global.currentsong,1,1)
-  }
-else
- {
-  global.currentsong=caster_load("music/toomuch.ogg")
-  caster_loop(global.currentsong,1,1)
-  }
+    if (global.flag[221] == 0)
+    {
+        global.currentsong = caster_load("music/ruins.ogg")
+        caster_loop(global.currentsong, 1, 1)
+    }
+    else
+    {
+        global.currentsong = caster_load("music/toomuch.ogg")
+        caster_loop(global.currentsong, 1, 1)
+    }
 }
 </string>
           </argument>

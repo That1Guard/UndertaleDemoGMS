@@ -56,4 +56,3 @@ file_text_write_real(myfileid, global.currentroom)
 file_text_writeln(myfileid)
 file_text_write_real(myfileid, obj_time.time)
 file_text_close(myfileid)
-

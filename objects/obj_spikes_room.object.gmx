@@ -25,16 +25,23 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_index=0
-image_speed=0
-yarl=0
-if room=room_ruins3 then yarl=4.5
-if room=room_ruins9 then yarl=99
-if room=room_ruins11 then yarl=99
-if room=room_ruins14 then yarl=12
-if room=room_ruins15B and x&lt;60 then yarl=13
-if room=room_ruins15C and x&lt;160 then yarl=14
-if room=room_ruins15D and x&gt;320 then yarl=15
+            <string>image_index = 0
+image_speed = 0
+yarl = 0
+if (room == room_ruins3)
+    yarl = 4.5
+if (room == room_ruins9)
+    yarl = 99
+if (room == room_ruins11)
+    yarl = 99
+if (room == room_ruins14)
+    yarl = 12
+if (room == room_ruins15B &amp;&amp; x &lt; 60)
+    yarl = 13
+if (room == room_ruins15C &amp;&amp; x &lt; 160)
+    yarl = 14
+if (room == room_ruins15D &amp;&amp; x &gt; 320)
+    yarl = 15
 </string>
           </argument>
         </arguments>
@@ -57,12 +64,15 @@ if room=room_ruins15D and x&gt;320 then yarl=15
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if global.plot&gt;yarl then image_index=1
-if room=room_ruins9 and global.flag[35]=1 then image_index=1
-if room=room_ruins11
-   {
-   if global.flag[33]=1 then image_index=1
-   }
+            <string>if (global.plot &gt; yarl)
+    image_index = 1
+if (room == room_ruins9 &amp;&amp; global.flag[35] == 1)
+    image_index = 1
+if (room == room_ruins11)
+{
+    if (global.flag[33] == 1)
+        image_index = 1
+}
 </string>
           </argument>
         </arguments>

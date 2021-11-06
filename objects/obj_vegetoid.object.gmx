@@ -67,15 +67,19 @@
             <kind>1</kind>
             <string>hurtanim = 0
 hurtsound = snd_damage
-talked = 0
+talked = false
 whatiheard = -1
 attacked = 0
 killed = 0
 global.heard = 0
 takedamage = 0
-outside=0
-mercymod=4
-image_speed=0.1
+outside = 0
+mercymod = 7
+image_speed = 0.1
+ht = 108
+wd = 100
+eat = 0
+ate = 0
 </string>
           </argument>
         </arguments>
@@ -84,41 +88,24 @@ image_speed=0.1
     <event eventtype="1" enumb="0">
       <action>
         <libid>1</libid>
-        <id>601</id>
-        <kind>0</kind>
+        <id>603</id>
+        <kind>7</kind>
         <userelative>0</userelative>
         <isquestion>0</isquestion>
         <useapplyto>-1</useapplyto>
-        <exetype>1</exetype>
-        <functionname>action_execute_script</functionname>
+        <exetype>2</exetype>
+        <functionname></functionname>
         <codestring></codestring>
         <whoName>self</whoName>
         <relative>0</relative>
         <isnot>0</isnot>
         <arguments>
           <argument>
-            <kind>9</kind>
-            <script>scr_monsterdefeat</script>
-          </argument>
-          <argument>
-            <kind>0</kind>
-            <string>0</string>
-          </argument>
-          <argument>
-            <kind>0</kind>
-            <string>0</string>
-          </argument>
-          <argument>
-            <kind>0</kind>
-            <string>0</string>
-          </argument>
-          <argument>
-            <kind>0</kind>
-            <string>0</string>
-          </argument>
-          <argument>
-            <kind>0</kind>
-            <string>0</string>
+            <kind>1</kind>
+            <string>if (killed == 0 &amp;&amp; global.monsterhp[myself] == global.monstermaxhp[myself])
+    global.goldreward[3] += 4
+scr_monsterdefeat(0, 0, 0, 0, 0)
+</string>
           </argument>
         </arguments>
       </action>
@@ -140,28 +127,28 @@ image_speed=0.1
         <arguments>
           <argument>
             <kind>1</kind>
-            <string> blcon = instance_create(x+sprite_width-8,ystart,obj_blconsm)  
-  mycommand = round(random(100))
-  if mycommand &gt;= 0 and mycommand &lt; 20 then global.msg[0] = "Contains&amp;Vitamin&amp;A"
-  if mycommand &gt;= 20 and mycommand &lt; 40 then global.msg[0] = "Part Of&amp;A&amp;Complete&amp;Breakfast"
-  if mycommand &gt;= 40 and mycommand &lt; 60 then global.msg[0] = "Eat&amp;Your&amp;Greens"
-  if mycommand &gt;= 60 and mycommand &lt;= 80 then global.msg[0] = "Farmed&amp;Locally,&amp;Very&amp;Locally"
-  if mycommand &gt;= 80 and mycommand &lt;= 100 then global.msg[0] = "Fresh&amp;Morning&amp;Taste"
-  if whatiheard = 3 then
-      { 
-     global.msg[0] = "Plants&amp;Can't&amp;Talk&amp;Dummy"
-      }
- 
-     
+            <string>blcon = instance_create(((x + sprite_width) - 8), ystart, obj_blconsm)
+mycommand = round(random(100))
+if (mycommand &gt;= 0 &amp;&amp; mycommand &lt; 25)
+    global.msg[0] = "Contains&amp;Vitamin&amp;A"
+if (mycommand &gt;= 25 &amp;&amp; mycommand &lt; 50)
+    global.msg[0] = "Part Of&amp;A&amp;Complete&amp;Breakfast"
+if (mycommand &gt;= 50 &amp;&amp; mycommand &lt;= 75)
+    global.msg[0] = "Farmed&amp;Locally,&amp;Very&amp;Locally"
+if (mycommand &gt;= 75 &amp;&amp; mycommand &lt;= 100)
+    global.msg[0] = "Fresh&amp;Morning&amp;Taste"
+if (ate == 1)
+    global.msg[0] = "Ate&amp;Your&amp;Greens"
+if (whatiheard == 3)
+    global.msg[0] = "Plants&amp;Can't&amp;Talk&amp;Dummy"
+if (whatiheard == 4)
+    global.msg[0] = "Eat&amp;Your&amp;Greens"
 global.msg[1] = "%%%"
 global.typer = 2
-blconwd = instance_create(blcon.x+15,blcon.y+10,OBJ_NOMSCWRITER)
-    
-    
+blconwd = instance_create((blcon.x + 15), (blcon.y + 10), OBJ_NOMSCWRITER)
 global.border = 3
-obj_heart.x = round((global.idealborder[0] + global.idealborder[1])/2) - 8
-obj_heart.y = round((global.idealborder[2] + global.idealborder[3])/2) - 8
-
+obj_heart.x = (round(((global.idealborder[0] + global.idealborder[1]) / 2)) - 8)
+obj_heart.y = (round(((global.idealborder[2] + global.idealborder[3]) / 2)) - 8)
 </string>
           </argument>
         </arguments>
@@ -184,13 +171,13 @@ obj_heart.y = round((global.idealborder[2] + global.idealborder[3])/2) - 8
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
-with blconwd instance_destroy()
-with blcon instance_destroy()
-talked = 0
-whatiheard=-1
+            <string>with (blconwd)
+    instance_destroy()
+with (blcon)
+    instance_destroy()
+talked = false
+whatiheard = -1
 global.mnfight = 2
-
 </string>
           </argument>
         </arguments>
@@ -213,27 +200,26 @@ global.mnfight = 2
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if sprite_index != spr_vegetoidhurt then
+            <string>if (sprite_index != spr_vegetoidhurt)
 {
-dmgwriter = instance_create(x + sprite_width/2 - 48,y+ 80,obj_dmgwriter);
-global.damage = takedamage
-with (dmgwriter) dmg = global.damage
-sprite_index=spr_vegetoidhurt
-snd_play(hurtsound)
+    dmgwriter = instance_create(((x + (sprite_width / 2)) - 48), (y + 80), obj_dmgwriter)
+    global.damage = takedamage
+    with (dmgwriter)
+        dmg = global.damage
+    sprite_index = spr_vegetoidhurt
+    snd_play(hurtsound)
 }
-
-x = x + shudder
-if shudder &lt; 0 then shudder = -(shudder + 2)
-else shudder = -shudder
-
-if shudder = 0 then
-  {
-   global.hurtanim[myself] = 2
-   exit;
-  }
+x += shudder
+if (shudder &lt; 0)
+    shudder = (-(shudder + 2))
+else
+    shudder = (-shudder)
+if (shudder == 0)
+{
+    global.hurtanim[myself] = 2
+    exit
+}
 alarm[3] = 2
-
-
 </string>
           </argument>
         </arguments>
@@ -256,183 +242,180 @@ alarm[3] = 2
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if global.mnfight = 3 then attacked = 0
-
-scr_blconmatch() //extend ballcons
-  
-if global.mnfight = 1 then
-if talked = 0 then
+            <string>if (global.mnfight == 3)
+    attacked = 0
+scr_blconmatch()
+if (global.myfight == 0 &amp;&amp; global.mnfight == 0)
+    eat = 0
+if (global.mnfight == 1)
+{
+    if (talked == false)
     {
-    alarm[5] = 75
-    alarm[6] = 1
-    talked = 1
-    global.heard = 0
+        alarm[5] = 75
+        alarm[6] = 1
+        talked = true
+        global.heard = 0
     }
-
-if keyboard_multicheck_pressed(vk_enter) //cuts balloons short
-   {
-   if alarm[5] &gt; 5 and obj_lborder.x = global.idealborder[0] then alarm[5] = 2
-   }
-
-
-if global.hurtanim[myself] = 1 then
-{
-shudder = 16
-alarm[3] = global.damagetimer
-global.hurtanim[myself] = 3
 }
-
-if global.hurtanim[myself] = 2 then
+if keyboard_multicheck_pressed(13)
 {
-global.monsterhp[myself] -= takedamage
-with (dmgwriter) alarm[2] = 15
-   if global.monsterhp[myself] &gt;= 1 then
-     {
-    global.hurtanim[myself] = 0
-    sprite_index=spr_vegetoid
-    image_index = 0
+    if (alarm[5] &gt; 5 &amp;&amp; obj_lborder.x == global.idealborder[0] &amp;&amp; alarm[6] &lt; 0)
+        alarm[5] = 2
+}
+if (global.hurtanim[myself] == 1)
+{
+    shudder = 16
+    alarm[3] = global.damagetimer
+    global.hurtanim[myself] = 3
+}
+if (global.hurtanim[myself] == 2)
+{
+    global.monsterhp[myself] -= takedamage
+    with (dmgwriter)
+        alarm[2] = 15
+    if (global.monsterhp[myself] &gt;= 1)
+    {
+        global.hurtanim[myself] = 0
+        sprite_index = spr_vegetoid
+        image_index = 0
+        global.myfight = 0
+        global.mnfight = 1
+    }
+    else
+    {
+        global.myfight = 0
+        global.mnfight = 1
+        killed = 1
+        instance_destroy()
+    }
+}
+if (global.hurtanim[myself] == 5)
+{
+    global.damage = 0
+    instance_create(((x + (sprite_width / 2)) - 48), (y - 24), obj_dmgwriter)
+    with (obj_dmgwriter)
+        alarm[2] = 30
     global.myfight = 0
     global.mnfight = 1
-     }
-   else
-     {
-     global.myfight = 0
-     global.mnfight = 1
-     killed = 1
-     instance_destroy()
-     }
+    global.hurtanim[myself] = 0
 }
-
-
-if global.hurtanim[myself] = 5 then
+if (global.mnfight == 2)
 {
-global.damage=0
-instance_create(x + sprite_width/2 - 48,y - 24,obj_dmgwriter);
-with (obj_dmgwriter) alarm[2] = 30
-global.myfight = 0
-global.mnfight = 1
-global.hurtanim[myself] = 0
+    if (attacked == 0)
+    {
+        global.turntimer = 110
+        global.firingrate = 4
+        if (mycommand &lt; 50)
+        {
+            global.firingrate = 6
+            if (((global.monster[0] + global.monster[1]) + global.monster[2]) &gt; true)
+                global.firingrate = 10
+            if (((global.monster[0] + global.monster[1]) + global.monster[2]) == 3)
+                global.firingrate = 16
+            gen = instance_create(0, 0, obj_1sidegen)
+            if (eat == 1)
+                gen.specgreen = 1
+            gen.bullettype = 6
+        }
+        if (mycommand &gt;= 50)
+        {
+            global.firingrate = 18
+            if (((global.monster[0] + global.monster[1]) + global.monster[2]) == 2)
+                global.firingrate = 30
+            if (((global.monster[0] + global.monster[1]) + global.monster[2]) == 3)
+                global.firingrate = 42
+            gen = instance_create(0, 0, obj_1sidegen)
+            if (eat == 1)
+                gen.specgreen = 1
+            gen.bullettype = 5
+        }
+        gen.myself = myself
+        gen.dmg = global.monsteratk[myself]
+        if (mycommand &gt;= 0)
+            global.msg[0] = "* Vegetoid gave a mysterious&amp;  smile."
+        if (mycommand &gt;= 30)
+            global.msg[0] = "* Vegetoid cackles softly."
+        if (mycommand &gt;= 70)
+            global.msg[0] = "* Vegetoid's here for your&amp;  health."
+        if (mycommand &gt;= 90)
+            global.msg[0] = "* It smells like steamed&amp;  carrots and peas."
+        if (global.monsterhp[myself] &lt; (global.monstermaxhp[myself] / 3))
+            global.msg[0] = "* Vegetoid seems kind of&amp;  bruised."
+        attacked = 1
+    }
 }
-
-if global.mnfight = 2 then
-    {
-    if attacked = 0 then
-    {
-    global.turntimer = 110
-    global.firingrate= 4
-       if mycommand&lt;50 then
-          {
-          global.firingrate=6
-          if global.monster[0]+global.monster[1]+global.monster[2]&gt;1 then global.firingrate=10
-          if global.monster[0]+global.monster[1]+global.monster[2]=3 then global.firingrate=16
-          gen=instance_create(0,0,obj_1sidegen)
-          gen.bullettype=6
-          }
-       if mycommand&gt;=50 then
-          {
-          global.firingrate=18
-          if global.monster[0]+global.monster[1]+global.monster[2]=2 then global.firingrate=30
-          if global.monster[0]+global.monster[1]+global.monster[2]=3 then global.firingrate=42
-          gen=instance_create(0,0,obj_1sidegen)
-          gen.bullettype=5
-          }
-    gen.myself=myself
-    gen.dmg=global.monsteratk[myself]
-    if mycommand &gt;= 0 then global.msg[0] = "* Vegetoid gave a mysterious&amp;  smile."
-    if mycommand &gt;= 30 then global.msg[0] = "* Vegetoid cackles softly."
-    if mycommand &gt;= 70 then global.msg[0] = "* Vegetoid's here for your&amp;  health."
-    if mycommand &gt;= 90 then global.msg[0] = "* It smells like steamed&amp;  carrots and peas."
-    if global.monsterhp[myself] &lt; global.monstermaxhp[myself]/3 then global.msg[0]="* Vegetoid seems kind of&amp;  bruised."
-    attacked = 1
-    }
-    }
-
-
-if whatiheard=1 and instance_exists(OBJ_WRITER)=false then
- {
+if (whatiheard == 1 &amp;&amp; instance_exists(OBJ_WRITER) == 0)
+{
     script_execute(scr_mercystandard)
-    if mercy&lt;0 then
-     {
-     killed=1
-     instance_destroy()
-     }
- }
-
-    // talk commands and results
-if global.myfight = 2 then
-   {
-      if whatiheard != -1
-      {
-      if global.heard = 0
-       {
-          if whatiheard = 0 then
-               {
-                   global.msc = 0
-                   global.msg[0] = "* VEGETOID - ATK 6 DEF 6&amp;* Serving Size: 1 Monster&amp;* Not monitored by the USDA/^"
-                   OBJ_WRITER.halt = 3
-                   iii = instance_create(global.idealborder[0],global.idealborder[2],OBJ_WRITER)
-                   with iii halt = 0
-               }
-           if whatiheard = 3 then
-               {
-                   global.myfight=0
-                   global.mnfight=1
-               }
-            if whatiheard = 1 then
-               {
-                   global.msc = 0
-                    script_execute(scr_mercystandard)
-                   global.msg[0] = "* You tried to eat Vegetoid^1,&amp;  but it wasn't weakened&amp;  enough./^"
-                   if mercy &lt;0 then
-                     {
-                    global.msg[0]="* You recovered 7 HP!/^"
-                    instance_create(0,0,obj_foodsound)
-                    script_execute(scr_recover,7)
-                    sprite_index=spr_vegetoidhurt
-                     }
-                   OBJ_WRITER.halt = 3
-                   iii = instance_create(global.idealborder[0],global.idealborder[2],OBJ_WRITER)
-                   with iii halt = 0
-               }
-               
-         //  if whatiheard = 1 then
-           //    {
-             //      global.msc = 0
-               //    global.msg[0] = "* You raise your arms and&amp;  wiggle your fingers.&amp;* Whimsun freaks out!/^"
-                 //  OBJ_WRITER.halt = 3
-                 //  iii = instance_create(global.idealborder[0],global.idealborder[2],OBJ_WRITER)
-                  // with iii halt = 0
-                  // mercymod=101
-              // }
-         //  if whatiheard = 6 then
-        //       {
-        //           global.msc = 0
-        //           global.msg[0] = "* Do robots dream of&amp;electric sex?/^"
-       //            OBJ_WRITER.halt = 3
-       //            iii = instance_create(global.idealborder[0],global.idealborder[2],OBJ_WRITER)
-       //        }
-       //        
-        //    if whatiheard = 7 then
-        //       {
-        //           global.msc = 0
-       //            global.msg[0] = "* I hate programming this./^"
-         //          OBJ_WRITER.halt = 3
-        //           iii = instance_create(global.idealborder[0],global.idealborder[2],OBJ_WRITER)
-        //           with iii halt = 0
-       //        }
-               global.heard = 1
-         }
-         }
-   }
-
-if global.myfight=4 then
+    if (mercy &lt; 8)
     {
-    if global.mercyuse=0 then
-      {
-       script_execute(scr_mercystandard)
-       if mercy &lt;0 then instance_destroy()
-      }
+        killed = 0
+        instance_destroy()
     }
+}
+if (global.myfight == 2)
+{
+    if (whatiheard != -1)
+    {
+        if (global.heard == 0)
+        {
+            if (whatiheard == 0)
+            {
+                global.msc = 0
+                global.msg[0] = "* VEGETOID - ATK 6 DEF 6&amp;* Serving Size: 1 Monster&amp;* Not monitored by the USDA/^"
+                OBJ_WRITER.halt = 3
+                iii = instance_create(global.idealborder[0], global.idealborder[2], OBJ_WRITER)
+                with (iii)
+                    halt = false
+            }
+            if (whatiheard == 3)
+            {
+                global.myfight = 0
+                global.mnfight = 1
+            }
+            if (whatiheard == 1)
+            {
+                global.msc = 0
+                script_execute(scr_mercystandard)
+                global.msg[0] = "* You tried to eat Vegetoid^1,&amp;  but it wasn't weakened&amp;  enough./^"
+                if (mercy &lt; 8)
+                {
+                    global.msg[0] = "* You took a bite out of&amp;  Vegetoid^1.&amp;* You recovered 5 HP!/^"
+                    instance_create(0, 0, obj_foodsound)
+                    script_execute(scr_recover, 5)
+                    sprite_index = spr_vegetoidhurt
+                }
+                OBJ_WRITER.halt = 3
+                iii = instance_create(global.idealborder[0], global.idealborder[2], OBJ_WRITER)
+                with (iii)
+                    halt = false
+            }
+            if (whatiheard == 4)
+            {
+                eat = 1
+                global.msc = 0
+                global.msg[0] = "* You pat your stomach^1.&amp;* Vegetoid offers a healthy&amp;  meal./^"
+                OBJ_WRITER.halt = 3
+                iii = instance_create(global.idealborder[0], global.idealborder[2], OBJ_WRITER)
+                with (iii)
+                    halt = false
+            }
+            global.heard = 1
+        }
+    }
+}
+if (global.myfight == 4)
+{
+    if (global.mercyuse == 0)
+    {
+        script_execute(scr_mercystandard)
+        if (mercy &lt; 0)
+        {
+            global.flag[134] = 1
+            instance_destroy()
+        }
+    }
+}
 </string>
           </argument>
         </arguments>
@@ -455,15 +438,16 @@ if global.myfight=4 then
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if outside=0 then
+            <string>if (outside == 0)
 {
-OBJ_WRITER.halt=3
-global.monster[myself]=0
-if global.mnfight=2 then global.mnfight=1
-outside=1
-instance_destroy()
-global.flag[13]=1
-global.flag[14]=3
+    OBJ_WRITER.halt = 3
+    global.monster[myself] = false
+    if (global.mnfight == 2)
+        global.mnfight = 1
+    outside = 1
+    instance_destroy()
+    global.flag[13] = 1
+    global.flag[14] = 3
 }
 </string>
           </argument>

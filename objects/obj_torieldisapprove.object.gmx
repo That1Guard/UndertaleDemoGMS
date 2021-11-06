@@ -25,12 +25,12 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>global.dontfade=0
-image_speed=0
-conversation=0
-global.faceemotion=1
-image_xscale=2
-image_yscale=2
+            <string>global.dontfade = 0
+image_speed = 0
+conversation = 0
+global.faceemotion = 1
+image_xscale = 2
+image_yscale = 2
 </string>
           </argument>
         </arguments>
@@ -77,9 +77,10 @@ image_yscale=2
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if x&lt;(room_width/2 - sprite_width/2 + 240) then speed=0
-
-if global.monster[0]=0 then image_index=1
+            <string>if (x &lt; (((room_width / 2) - (sprite_width / 2)) + 240))
+    speed = 0
+if (global.monster[0] == false)
+    image_index = 1
 </string>
           </argument>
         </arguments>

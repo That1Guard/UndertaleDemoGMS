@@ -25,44 +25,20 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed=0.5
-attackratio=0
-direction=(instance_number(obj_friendlypellet))*30
-speed=4
-alarm[0]=35
-attackyou=0
-blonicx=0
-blonicy=0
+            <string>image_speed = 0.5
+attackratio = 0
+direction = (instance_number(obj_friendlypellet) * 30)
+speed = 4
+alarm[0] = 35
+attackyou = 0
+blonicx = 0
+blonicy = 0
 </string>
           </argument>
         </arguments>
       </action>
     </event>
     <event eventtype="2" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>101</id>
-        <kind>0</kind>
-        <userelative>-1</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>1</exetype>
-        <functionname>action_move</functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>000010000</string>
-          </argument>
-          <argument>
-            <kind>0</kind>
-            <string>0</string>
-          </argument>
-        </arguments>
-      </action>
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -79,8 +55,9 @@ blonicy=0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>blonicx=x
-blonicy=y
+            <string>action_move("000010000", 0)
+blonicx = x
+blonicy = y
 </string>
           </argument>
         </arguments>
@@ -103,17 +80,17 @@ blonicy=y
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if attackyou=1 then
+            <string>if (attackyou == 1)
 {
-attackratio+=1
-move_towards_point(obj_fakeheart.x,obj_fakeheart.y,0.1*attackratio*attackratio*attackratio+random(0.5))
-direction+=random(4)-random(2)
-depth=-500
-attackyou=2
-friction=-0.04*attackratio
+    attackratio += 1
+    move_towards_point(obj_fakeheart.x, obj_fakeheart.y, ((((0.1 * attackratio) * attackratio) * attackratio) + random(0.5)))
+    direction += (random(4) - random(2))
+    depth = -500
+    attackyou = 2
+    friction = (-0.04 * attackratio)
 }
-
-if attackyou=3 then instance_destroy()
+if (attackyou == 3)
+    instance_destroy()
 </string>
           </argument>
         </arguments>
@@ -136,19 +113,27 @@ if attackyou=3 then instance_destroy()
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if global.invc &lt; 1 then
+            <string>if (global.invc &lt; 1)
 {
-global.hp -= 19
-snd_play(snd_hurt1)
-global.hshake = 8
-global.shakespeed = 1.5
-global.vshake = 2
-instance_create(0,0,obj_shaker)
-global.invc = 30
-obj_floweybattle1.conversation=10
-obj_friendlypellet.attackyou=3
-if instance_exists(OBJ_WRITER) then with OBJ_WRITER instance_destroy()
-if instance_exists(obj_blconwdflowey) then with obj_blconwdflowey instance_destroy()
+    global.hp -= 19
+    snd_play(snd_hurt1)
+    global.hshake = 8
+    global.shakespeed = 1.5
+    global.vshake = 2
+    instance_create(0, 0, obj_shaker)
+    global.invc = 30
+    obj_floweybattle1.conversation = 10
+    obj_friendlypellet.attackyou = 3
+    if instance_exists(OBJ_WRITER)
+    {
+        with (OBJ_WRITER)
+            instance_destroy()
+    }
+    if instance_exists(obj_blconwdflowey)
+    {
+        with (obj_blconwdflowey)
+            instance_destroy()
+    }
 }
 </string>
           </argument>
@@ -172,11 +157,14 @@ if instance_exists(obj_blconwdflowey) then with obj_blconwdflowey instance_destr
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if attackyou!=3 then
+            <string>if (attackyou != 3)
 {
-if obj_floweybattle1.conversation=3 then obj_floweybattle1.conversation=5
-if obj_floweybattle1.conversation=8 then obj_floweybattle1.conversation=9
-if obj_floweybattle1.conversation=9.4 then obj_floweybattle1.conversation=9.5
+    if (obj_floweybattle1.conversation == 3)
+        obj_floweybattle1.conversation = 5
+    if (obj_floweybattle1.conversation == 8)
+        obj_floweybattle1.conversation = 9
+    if (obj_floweybattle1.conversation == 9.4)
+        obj_floweybattle1.conversation = 9.5
 }
 </string>
           </argument>

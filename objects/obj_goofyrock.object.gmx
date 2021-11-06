@@ -25,15 +25,16 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>myinteract=0
-image_xscale=1
-image_yscale=1
-conversation=0
-pathtravel=0
-if global.flag[33]=1 then
+            <string>phase = 0
+myinteract = 0
+image_xscale = 1
+image_yscale = 1
+conversation = 0
+pathtravel = 0
+if (global.flag[33] == 1)
 {
-x+=60
-conversation=15
+    x += 60
+    conversation = 15
 }
 </string>
           </argument>
@@ -57,8 +58,11 @@ conversation=15
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>obj_mainchara.speed=0
-if obj_mainchara.x&gt;x+15 then obj_mainchara.hspeed=1
+            <string>with (obj_mainchara)
+    uncan = 0
+obj_mainchara.speed = 0
+if (obj_mainchara.x &gt; (x + 15))
+    obj_mainchara.hspeed = 1
 </string>
           </argument>
         </arguments>
@@ -81,17 +85,24 @@ if obj_mainchara.x&gt;x+15 then obj_mainchara.hspeed=1
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>global.interact=0
-conversation+=1
-path_speed=0
-obj_mainchara.speed=0
-if conversation=9 then with obj_spikes_room image_index = 1
-if conversation&gt;13 then {
-global.flag[33]=1
-x = 280
-conversation = 15
-with obj_spikes_room 
-    image_index = 1
+            <string>with (obj_mainchara)
+    uncan = 0
+global.interact = 0
+conversation += 1
+path_speed = 0
+obj_mainchara.speed = 0
+if (conversation == 9)
+{
+    with (obj_spikes_room)
+        image_index = 1
+}
+if (conversation &gt; 13)
+{
+    global.flag[33] = 1
+    x = 280
+    conversation = 15
+    with (obj_spikes_room)
+        image_index = 1
 }
 </string>
           </argument>
@@ -116,13 +127,14 @@ with obj_spikes_room
           <argument>
             <kind>1</kind>
             <string>myinteract = 3
-global.msc=505
-global.typer=5
-global.facechoice=0
-global.faceemotion=0
-mydialoguer = instance_create(0,0,obj_dialoguer)
-if conversation!=9 then conversation+=1
-global.interact=1
+global.msc = 505
+global.typer = 5
+global.facechoice = 0
+global.faceemotion = 0
+mydialoguer = instance_create(0, 0, obj_dialoguer)
+if (conversation != 9)
+    conversation += 1
+global.interact = 1
 </string>
           </argument>
         </arguments>
@@ -185,52 +197,53 @@ global.interact=1
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if instance_exists(obj_dialoguer)=false and conversation=1 then
-   {
-   path_start(path_goofyrock,1,0,false)
-   alarm[1]=11
-   global.interact=1
-   conversation+=1
-   if obj_mainchara.x&gt;x+15 then obj_mainchara.hspeed=1
-   }
-   
-if instance_exists(obj_dialoguer)=false and conversation=4 then
-   {
-   path_speed=1
-   alarm[1]=11
-   global.interact=1
-   conversation+=1
-   if obj_mainchara.depth&gt;depth then obj_mainchara.vspeed=-1
-   }
-
-if instance_exists(obj_dialoguer)=false and conversation=7 then
-   {
-   path_speed=1
-   alarm[1]=61
-   global.interact=1
-   conversation+=1
-   if obj_mainchara.depth&lt;depth then obj_mainchara.vspeed=1
-   alarm[2]=11
-   }
-   
-if instance_exists(obj_dialoguer)=false and conversation=10.5 then
-   {
-   with obj_spikes_room image_index=0
-   path_speed=2
-   alarm[1]=11
-   conversation+=0.5
-   }
-
-if instance_exists(obj_dialoguer)=false and conversation=13 then
-   {
-   path_speed=1
-   alarm[1]=21
-   global.interact=1
-   conversation+=1
-   if obj_mainchara.x&gt;x+15 then obj_mainchara.hspeed=1
-   }
-   
-if conversation=15 then x=280
+            <string>if (instance_exists(obj_dialoguer) == 0 &amp;&amp; conversation == 1)
+{
+    path_start(path_goofyrock, 1, path_action_stop, 0)
+    alarm[1] = 11
+    global.interact = 1
+    conversation += 1
+    if (obj_mainchara.x &gt; (x + 15))
+        obj_mainchara.hspeed = 1
+}
+if (instance_exists(obj_dialoguer) == 0 &amp;&amp; conversation == 4)
+{
+    path_speed = 1
+    alarm[1] = 11
+    global.interact = 1
+    conversation += 1
+    if (obj_mainchara.depth &gt; depth)
+        obj_mainchara.vspeed = -1
+}
+if (instance_exists(obj_dialoguer) == 0 &amp;&amp; conversation == 7)
+{
+    path_speed = 1
+    alarm[1] = 61
+    global.interact = 1
+    conversation += 1
+    if (obj_mainchara.depth &lt; depth)
+        obj_mainchara.vspeed = 1
+    alarm[2] = 11
+}
+if (instance_exists(obj_dialoguer) == 0 &amp;&amp; conversation == 10.5)
+{
+    with (obj_spikes_room)
+        image_index = 0
+    path_speed = 2
+    alarm[1] = 11
+    conversation += 0.5
+}
+if (instance_exists(obj_dialoguer) == 0 &amp;&amp; conversation == 13)
+{
+    path_speed = 1
+    alarm[1] = 21
+    global.interact = 1
+    conversation += 1
+    if (obj_mainchara.x &gt; (x + 15))
+        obj_mainchara.hspeed = 1
+}
+if (conversation == 15)
+    x = 280
 </string>
           </argument>
         </arguments>
@@ -253,10 +266,8 @@ if conversation=15 then x=280
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if global.interact=0 then
-{
-alarm[0]=1
-}
+            <string>if (global.interact == 0) then
+    alarm[0] = 1
 </string>
           </argument>
         </arguments>

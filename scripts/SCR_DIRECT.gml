@@ -6,14 +6,12 @@ global.bulletvariable[4] = argument4 //gdirection
 global.bulletvariable[5] = argument5 //friction
 global.bulletvariable[6] = argument6 //direction
 global.bulletvariable[7] = argument7 //directionalspeed
-bulletnumber = argument8 
+bulletnumber = argument8
 global.bulletappearance = argument9
-
-
-for (i=0; i<=bulletnumber;i+=1)
+for (i = 0; i <= bulletnumber; i += 1)
 {
-iii=instance_create(x,y,blt_direct)
-iii.dmg = global.monsteratk[myself]
+    iii = instance_create(x, y, blt_direct)
+    iii.dmg = global.monsteratk[myself]
 }
 
 //1, 4, 60, 0.5, 270, 0.1, 8 rain

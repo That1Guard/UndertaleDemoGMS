@@ -1,1 +1,1 @@
-audio_resume_sound(argument0)
+audio_resume_sound(argument0);

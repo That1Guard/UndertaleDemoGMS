@@ -25,23 +25,23 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>stretchwidth = global.monsterinstance[global.mytarget].sprite_width
-stretchfactor = stretchwidth/global.monstermaxhp[global.mytarget]
+            <string>stretchwidth = global.monsterinstance[global.mytarget].wd
+stretchfactor = (stretchwidth / global.monstermaxhp[global.mytarget])
 apparenthp = global.monsterhp[global.mytarget]
 actualhp = global.monsterhp[global.mytarget]
 maxhp = global.monstermaxhp[global.mytarget]
-
-
+negative = 0
+special = false
 dmg = global.damage
-draw_set_color(c_red)
-alarm[0] = 2
+alarm[0] = 1
 i = 1
-if dmg != 0 then
+if (dmg != 0)
 {
-vspeed=-4
-gravity=0.5
-gravity_direction=270
+    vspeed = -4
+    gravity = 0.5
+    gravity_direction = 270
 }
+drawbar = 1
 </string>
           </argument>
         </arguments>
@@ -80,12 +80,19 @@ gravity_direction=270
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if i = 0 then i = 1
-else i = 0
-
-if apparenthp &gt; (actualhp - dmg) then apparenthp -= (round(dmg/20) + 2)
-if apparenthp &lt; 0 then apparenthp = 0
-
+            <string>if (i == 0)
+    i = 1
+else
+    i = 0
+if (apparenthp &gt; (actualhp - dmg))
+    apparenthp -= (dmg / 15)
+else
+    apparenthp = (actualhp - dmg)
+if (negative == 0)
+{
+    if (apparenthp &lt; 0)
+        apparenthp = 0
+}
 alarm[0] = 2
 </string>
           </argument>
@@ -109,32 +116,82 @@ alarm[0] = 2
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_set_color(c_black)
-if dmg&lt;20 or dmg=11 or dmg=21 or dmg=31 or dmg=41 or dmg=51 or dmg=61 or dmg=71 or dmg=81 or dmg=91 then draw_rectangle(x, y-24, x+48,y,false)
-else draw_rectangle(x, y-24, x+64,y,false)
-draw_set_font(fnt_dmg)
-if i = 0 or i = 1 then draw_set_color(c_red)
-if dmg &gt; 0 then
-  {
-  draw_text(x, y-24, dmg)
-  draw_set_color(c_dkgray)
-  draw_rectangle(x, ystart+8, x + global.monstermaxhp[global.mytarget]*stretchfactor, ystart+20,false)
-  draw_set_color(c_lime)
-  draw_rectangle(x,ystart+8, x + apparenthp*stretchfactor, ystart+20,false)
-  }
-  else {
-       draw_set_color(c_white)
-       draw_text(x, y-24, "MISS")
-       }
-
-
-if y &gt; ystart then
+            <string>thisnum = dmg
+if (thisnum &gt;= 0)
 {
-y = ystart
-vspeed = 0
-gravity = 0
+    place = 0
+    numadd = 10
+    if (thisnum &gt;= numadd)
+    {
+        while (thisnum &gt;= numadd)
+        {
+            place += 1
+            numadd *= 10
+        }
+    }
 }
-
+else
+{
+    thisnum = 0
+    place = 0
+}
+thisnum2 = thisnum
+for (i = place; i &gt;= 0; i -= 1)
+{
+    numnum[i] = floor((thisnum2 / power(10, i)))
+    thisnum2 -= (numnum[i] * power(10, i))
+}
+if (thisnum &gt; 0)
+{
+    if (drawbar == 1)
+    {
+        draw_set_color(c_black)
+        draw_rectangle((x - 1), (ystart + 7), (x + round(((global.monstermaxhp[global.mytarget] * stretchfactor) + 1))), (ystart + 21), false)
+        draw_set_color(c_dkgray)
+        draw_rectangle(x, (ystart + 8), (x + round((global.monstermaxhp[global.mytarget] * stretchfactor))), (ystart + 20), false)
+        draw_set_color(c_lime)
+        if (apparenthp &gt; 0)
+            draw_rectangle(x, (ystart + 8), round((x + (apparenthp * stretchfactor))), (ystart + 20), false)
+    }
+    for (i = place; i &gt;= 0; i -= 1)
+    {
+        draw_set_color(c_red)
+        if (stretchwidth &lt;= 120)
+            draw_sprite_ext(spr_dmgnum_o, numnum[i], (((x + 30) - (i * 32)) + (place * 16)), (y - 28), 1, 1, 0, c_red, 1)
+        else
+            draw_sprite_ext(spr_dmgnum_o, numnum[i], ((((x - 30) + (stretchwidth / 2)) - (i * 32)) + (place * 16)), (y - 28), 1, 1, 0, c_red, 1)
+    }
+}
+if (thisnum == 0)
+{
+    draw_set_color(c_white)
+    if (special == false)
+        draw_sprite_ext(spr_dmgmiss_o, 0, (x - 10), (y - 16), 1, 1, 0, c_silver, 1)
+    if (special == true)
+    {
+        draw_set_color(c_red)
+        draw_set_font(fnt_main)
+        ex = choose(0, 1, 2, 3, 4, 5)
+        if (ex == 0)
+            draw_text((x - 10), (y - 10), "Don't worry about it.")
+        if (ex == 1)
+            draw_text((x - 10), (y - 10), "Absorbed")
+        if (ex == 2)
+            draw_text((x - 10), (y - 10), "I'm lovin' it.")
+        if (ex == 3)
+            draw_text((x - 10), (y - 10), "But it didn't work.")
+        if (ex == 4)
+            draw_text((x - 10), (y - 10), "nope")
+        if (ex == 5)
+            draw_text((x - 10), (y - 10), "FAILURE")
+    }
+}
+if (y &gt; ystart)
+{
+    y = ystart
+    vspeed = 0
+    gravity = 0
+}
 </string>
           </argument>
         </arguments>

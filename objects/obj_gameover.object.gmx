@@ -53,7 +53,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>unpersist=0
+            <string>unpersist = 0
 </string>
           </argument>
         </arguments>
@@ -76,17 +76,14 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if unpersist=1 then
-   {
-   room_goto(global.currentroom)
-   }
-
-if room=global.currentroom then
-   {
-   room_persistent=0
-   script_execute(scr_tempload)
-   instance_destroy()
-   }
+            <string>if (unpersist == 1)
+    room_goto(global.currentroom)
+if (room == global.currentroom)
+{
+    room_persistent = false
+    script_execute(scr_tempload)
+    instance_destroy()
+}
 </string>
           </argument>
         </arguments>

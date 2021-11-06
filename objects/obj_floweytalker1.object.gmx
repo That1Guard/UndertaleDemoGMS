@@ -25,11 +25,17 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if room=room_area1_2 then
-if global.plot != 0 then instance_destroy()
-if room=room_ruinsexit then
-if global.plot&gt;27 then instance_destroy()
-image_speed=0
+            <string>if (room == room_area1_2)
+{
+    if (global.plot != 0)
+        instance_destroy()
+}
+if (room == room_ruinsexit)
+{
+    if (global.plot &gt; 27)
+        instance_destroy()
+}
+image_speed = 0
 </string>
           </argument>
         </arguments>
@@ -52,9 +58,9 @@ image_speed=0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_index=0
-sprite_index=spr_floweyshrink
-image_speed=0.5
+            <string>image_index = 0
+sprite_index = spr_floweyshrink
+image_speed = 0.5
 </string>
           </argument>
         </arguments>
@@ -78,8 +84,8 @@ image_speed=0.5
           <argument>
             <kind>1</kind>
             <string>snd_play(snd_floweylaugh)
-alarm[1]=150
-image_speed=0.6
+alarm[1] = 150
+image_speed = 0.6
 </string>
           </argument>
         </arguments>
@@ -102,11 +108,15 @@ image_speed=0.6
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if room=room_area1_2 then
-if global.plot != 0 then instance_destroy()
-if instance_exists(obj_floface) then image_index=obj_floface.image_index
-
-if sprite_index=spr_floweysink and image_index=5 then instance_destroy()
+            <string>if (room == room_area1_2) then
+{
+    if (global.plot != 0) then
+        instance_destroy()
+}
+if instance_exists(obj_floface) then
+    image_index = obj_floface.image_index
+if (sprite_index == spr_floweysink &amp;&amp; image_index == 5) then
+    instance_destroy()
 </string>
           </argument>
         </arguments>
@@ -129,20 +139,19 @@ if sprite_index=spr_floweysink and image_index=5 then instance_destroy()
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if sprite_index=spr_floweygrow then
-   {
-   image_index=0
-   sprite_index=spr_floweylaughoverworld
-   image_speed=0
-   alarm[0]=30
-   }
-
-if sprite_index=spr_floweyshrink then
-   {
-   image_index=0
-   sprite_index=spr_floweysink
-   image_speed=0.5
-   }
+            <string>if (sprite_index == spr_floweygrow) then
+{
+    image_index = 0
+    sprite_index = spr_floweylaughoverworld
+    image_speed = 0
+    alarm[0] = 30
+}
+if (sprite_index == spr_floweyshrink) then
+{
+    image_index = 0
+    sprite_index = spr_floweysink
+    image_speed = 0.5
+}
 </string>
           </argument>
         </arguments>

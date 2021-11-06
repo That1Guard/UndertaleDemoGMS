@@ -199,7 +199,7 @@ if (naming == 2)
             else
                 naming = 1
         }
-        keyboard_clear(vk_enter)
+        keyboard_clear(vk_return)
     }
     if (naming == 2)
     {
@@ -361,7 +361,7 @@ if (naming == 1)
                     selected2 = 0
                 }
             }
-            keyboard_clear(vk_enter)
+            keyboard_clear(vk_return)
         }
         else
         {
@@ -465,7 +465,7 @@ if (naming == 3)
                     r = 0.5
                     q = 0
                 }
-                keyboard_clear(vk_enter)
+                keyboard_clear(vk_return)
             }
             if (selected3 == 2)
             {
@@ -513,7 +513,7 @@ if (naming == 3)
         if (keyboard_multicheck_pressed(0) == 1 && selected3 == 0)
         {
             naming = 1
-            keyboard_clear(vk_enter)
+            keyboard_clear(vk_return)
         }
         if (keyboard_multicheck_pressed(0) == 1 && selected3 == 1)
         {

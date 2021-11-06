@@ -65,9 +65,15 @@ file_text_close(myfileid)
 global.hp = global.maxhp
 global.en = global.maxen
 script_execute(scr_tempsave)
-global.area = 0
+if (global.currentroom < room_overworld)
+    global.area = 0
+if (global.currentroom >= room_overworld3)
+    global.area = 1
 global.flag[360] = 0
 global.flag[361] = 0
 global.flag[362] = 0
 global.flag[363] = 0
 global.flag[364] = 0
+scr_dogcheck()
+if (dogcheck == 1)
+    room_goto(global.currentroom)

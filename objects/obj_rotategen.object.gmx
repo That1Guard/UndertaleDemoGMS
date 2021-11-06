@@ -25,12 +25,41 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>myself=-1
-number=global.bulletvariable[0]
-radius=global.bulletvariable[1]
-bullettype=global.bulletvariable[2]
-angle=0
-angleadd=360/number
+            <string>myself = -1
+number = global.bulletvariable[0]
+radius = global.bulletvariable[1]
+bullettype = global.bulletvariable[2]
+angle = 0
+angleadd = (360 / number)
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="2">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if (global.turntimer &lt; 1)
+{
+    global.turntimer = -1
+    if (global.mnfight == 2)
+        global.mnfight = 3
+    instance_destroy()
+}
 </string>
           </argument>
         </arguments>
@@ -53,16 +82,19 @@ angleadd=360/number
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>while (angle&lt;360)
-   {
-   iii=instance_create(x,y,bullettype)
-   iii.angleadd=angleadd
-   iii.angle=angle
-   iii.dmg=global.monsteratk[myself]
-   x+=lengthdir_x(radius,angle)
-   y+=lengthdir_y(radius,angle)
-   angle+=angleadd
-   }
+            <string>while (angle &lt; 360)
+{
+    iii = instance_create(x, y, bullettype)
+    if instance_exists(iii)
+    {
+        iii.angleadd = angleadd
+        iii.angle = angle
+        iii.dmg = global.monsteratk[myself]
+    }
+    x += lengthdir_x(radius, angle)
+    y += lengthdir_y(radius, angle)
+    angle += angleadd
+}
 instance_destroy()
 </string>
           </argument>

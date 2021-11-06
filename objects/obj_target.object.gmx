@@ -75,13 +75,16 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if global.weapon=3 then instance_create(x-16,y,obj_targetchoice)
-if global.weapon=13 then
-  {
-  r=round(random(1))
-  if r=0 then instance_create(x-16,y,obj_targetchoice)
-  if r=1 then instance_create(x+570,y,obj_targetchoice)
-  }
+            <string>if (global.weapon == 3)
+    instance_create((x - 16), y, obj_targetchoice)
+if (global.weapon == 13 || global.weapon == 45 || global.weapon == 51 || global.weapon == 52)
+{
+    r = round(random(1))
+    if (r == 0)
+        instance_create((x - 16), y, obj_targetchoice)
+    if (r == 1)
+        instance_create((x + 570), y, obj_targetchoice)
+}
 </string>
           </argument>
         </arguments>
@@ -104,17 +107,14 @@ if global.weapon=13 then
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
-if fade = 1 then
+            <string>if (fade == 1)
 {
-image_alpha -= 0.08
-image_xscale -= 0.06
-x+=15.8
+    image_alpha -= 0.08
+    image_xscale -= 0.06
+    x += 15.8
 }
-
-if image_xscale &lt; 0.08 then instance_destroy()
-
-
+if (image_xscale &lt; 0.08)
+    instance_destroy()
 </string>
           </argument>
         </arguments>

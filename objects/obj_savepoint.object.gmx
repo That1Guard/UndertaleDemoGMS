@@ -25,10 +25,10 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>myinteract=0
-image_xscale=1
-image_yscale=1
-image_speed=0.2
+            <string>myinteract = 0
+image_xscale = 1
+image_yscale = 1
+image_speed = 0.2
 </string>
           </argument>
         </arguments>
@@ -52,14 +52,22 @@ image_speed=0.2
           <argument>
             <kind>1</kind>
             <string>myinteract = 4
-global.msc=15
-global.typer=5
-global.facechoice=0
-global.faceemotion=0
-global.hp=global.maxhp
-global.en=global.maxen
+global.msc = 15
+global.typer = 5
+global.facechoice = 0
+global.faceemotion = 0
+if (global.hp &lt; global.maxhp)
+    global.hp = global.maxhp
+global.en = global.maxen
 snd_play(snd_power)
-mydialoguer = instance_create(0,0,obj_dialoguer)
+offroom = 0
+if (scr_murderlv() &gt;= 16)
+{
+    global.msc = 0
+    global.msg[0] = "* Determination./%%"
+}
+if (offroom == 0)
+    mydialoguer = instance_create(0, 0, obj_dialoguer)
 </string>
           </argument>
         </arguments>
@@ -122,13 +130,14 @@ mydialoguer = instance_create(0,0,obj_dialoguer)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if instance_exists(OBJ_WRITER)=false and myinteract=4 then
-    {
-    if global.plot&lt;2 then global.plot=2
-    global.interact=5
-    global.menuno=4
-    myinteract=5
-    }
+            <string>if (instance_exists(OBJ_WRITER) == 0 &amp;&amp; myinteract == 4)
+{
+    if (global.plot &lt; 2)
+        global.plot = 2
+    global.interact = 5
+    global.menuno = 4
+    myinteract = 5
+}
 </string>
           </argument>
         </arguments>

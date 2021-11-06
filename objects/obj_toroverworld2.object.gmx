@@ -82,7 +82,6 @@ direction = 270
 path_start(path_torielwalk1, 0, path_action_stop, 1)
 if (global.plot &gt; 1) then
     instance_destroy()
-
 </string>
           </argument>
         </arguments>
