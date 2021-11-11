@@ -25,8 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed=0
-image_index=0
+            <string>image_speed = 0
+image_index = 0
+phase = 0
 </string>
           </argument>
         </arguments>
@@ -49,7 +50,7 @@ image_index=0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_index=0
+            <string>image_index = 0
 </string>
           </argument>
         </arguments>
@@ -72,8 +73,8 @@ image_index=0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>alarm[0]=6
-image_index=1
+            <string>alarm[0] = 6
+image_index = 1
 </string>
           </argument>
         </arguments>
@@ -96,11 +97,11 @@ image_index=1
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if global.phasing=0
-  {
-  alarm[0]=6
-  image_index=1
-  }
+            <string>if (global.phasing == 0)
+{
+    alarm[0] = 6
+    image_index = 1
+}
 </string>
           </argument>
         </arguments>

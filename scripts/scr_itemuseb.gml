@@ -108,26 +108,6 @@ switch argument1
         spec_p = 0
         if (global.hp < global.maxhp)
             global.hp = global.maxhp
-        if instance_exists(obj_asgoreb)
-        {
-            spec_p = 1
-            global.msg[0] = "* You ate the Butterscotch Pie^1.&* Your HP was maxed out./"
-            global.msg[1] = "* The smell reminded ASGORE of&  something.../"
-            global.msg[2] = "* ASGORE's ATTACK down^1!&* ASGORE's DEFENSE down!/%%"
-            with (obj_asgoreb)
-            {
-                global.monsteratk[myself] -= 1
-                global.monsterdef[myself] -= 5
-            }
-        }
-        if instance_exists(obj_ripoff_toriel)
-        {
-            spec_p = 1
-            global.msg[0] = "* You ate the Butterscotch Pie^1.&* Your HP was maxed out./"
-            global.msg[1] = "* The smell reminded the Lost&  Souls of something...!/%%"
-            with (obj_monsterparent)
-                totalmercy += 3
-        }
         if (spec_p == 0)
             script_execute(scr_writetext, 0, "* You ate the Butterscotch Pie.&* Your HP was maxed out./%", 0, 0)
         if (spec_p == 1)
@@ -156,8 +136,6 @@ switch argument1
         break
     case 16:
         global.msg[0] = "* You ate the Snowman Piece."
-        if (room == room_tundra6A)
-            global.flag[56] = 4
         instance_create(0, 0, obj_foodsound)
         script_execute(scr_recoitem, 45)
         script_execute(scr_itemshift, argument0, 0)

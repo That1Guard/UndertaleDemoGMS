@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed=0.25
+            <string>event_inherited()
+image_speed = 0.25
 
 if instance_exists(obj_face_papyrus) with obj_face_papyrus instance_destroy()
 if global.faceemotion = 0 and sprite_index!=real(spr_face_sans) then sprite_index=real(spr_face_sans)
@@ -52,9 +53,12 @@ if global.faceemotion = 1 and sprite_index!=real(spr_face_sanschuckle) then spri
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if global.faceemotion = 0 and sprite_index!=real(spr_face_sans) then sprite_index=real(spr_face_sans)
-if global.faceemotion = 1 and sprite_index!=real(spr_face_sanschuckle) then sprite_index=real(spr_face_sanschuckle)
-if global.faceemotion = 2 and sprite_index!=real(spr_face_sanswink) then sprite_index=real(spr_face_sanswink)
+            <string>if (global.faceemotion == 0 &amp;&amp; sprite_index != real(spr_face_sans))
+    sprite_index = real(spr_face_sans)
+if (global.faceemotion == 1 &amp;&amp; sprite_index != real(spr_face_sanschuckle))
+    sprite_index = real(spr_face_sanschuckle)
+if (global.faceemotion == 2 &amp;&amp; sprite_index != real(spr_face_sanswink))
+    sprite_index = real(spr_face_sanswink)
 </string>
           </argument>
         </arguments>

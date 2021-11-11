@@ -25,9 +25,10 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>myinteract=0
-image_xscale=1
-image_yscale=1
+            <string>myinteract = 0
+image_xscale = 1
+image_yscale = 1
+phase = 0
 </string>
           </argument>
         </arguments>

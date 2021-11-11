@@ -25,7 +25,20 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>touched=0
+            <string>touched = false
+if (room == room_ruinsexit)
+{
+    if (global.flag[7] == 1)
+    {
+        instance_create(x, y, obj_door_s_musfade)
+        instance_destroy()
+    }
+    else
+    {
+        instance_create(140, 400, obj_solidsmall)
+        instance_create(160, 400, obj_solidsmall)
+    }
+}
 </string>
           </argument>
         </arguments>
@@ -49,7 +62,9 @@
           <argument>
             <kind>1</kind>
             <string>caster_free(cym)
-room_goto(room_next(room))
+if (room == room_ruinsexit)
+    room_goto(room_undertale)
+
 </string>
           </argument>
         </arguments>
@@ -72,15 +87,17 @@ room_goto(room_next(room))
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>global.interact=3 //battle or doors
-if touched=0
-    {
-    cym=caster_load("music/cymbal.ogg")
-    caster_play(cym,0.9,0.95)
-    instance_create(0,0,obj_whitefader)
-   alarm[2]=180
-   touched=1
-   }
+            <string>global.interact = 3
+if (touched == false)
+{
+    caster_free(-3)
+    cym = caster_load("music/cymbal.ogg")
+    caster_play(cym, 0.9, 0.95)
+    instance_create(0, 0, obj_whitefader)
+    alarm[2] = 180
+    touched = true
+    global.plot = 30
+}
 </string>
           </argument>
         </arguments>

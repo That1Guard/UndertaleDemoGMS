@@ -25,13 +25,14 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>myinteract=0
-read=0
-image_xscale=1
-jump=0
-image_yscale=1.5
-volume=1
-if global.plot = 0 then instance_destroy()
+            <string>myinteract = 0
+read = 0
+image_xscale = 1
+jump = 0
+image_yscale = 1.5
+volume = 1
+if (global.plot == 0)
+    instance_destroy()
 </string>
           </argument>
         </arguments>
@@ -54,8 +55,9 @@ if global.plot = 0 then instance_destroy()
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>with obj_mainchara path_start(path_unbed,2,0,false)
-jump=3
+            <string>with (obj_mainchara)
+    path_start(path_unbed, 2, path_action_stop, 0)
+jump = 3
 </string>
           </argument>
         </arguments>
@@ -78,39 +80,60 @@ jump=3
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if global.plot&gt;=24 and jump&lt;5
-  {
-  global.typer=31
-  global.faceemotion=0
-  global.facechoice=0
-  global.msc=0
-  global.msg[0]="* "+global.charname+"^1, please.../"
-  global.msg[1]="* Wake up!/"
-  global.msg[2]="* You are the future&amp;  of humans and&amp;  monsters.../%%"
-  obj_asriellamp.idealvolume[0]=0
-  obj_asriellamp.idealvolume[1]=0
-  instance_create(0,0,obj_dialoguer)
-  with obj_dialoguer depth=-999999
-  if instance_exists(OBJ_WRITER) with OBJ_WRITER depth=-9999999
-  jump=5
-  }
-if jump=5 then alarm[2]=2
-if instance_exists(obj_dialoguer)=false
-   {
-   jump=6
-background_visible[1]=0
-background_visible[0]=1
-if global.plot&lt;20 then background_visible[2]=1
-global.facing=3
-obj_mainchara.x=200
-obj_mainchara.y=104
-global.hp=global.maxhp
-if instance_exists(obj_unfader) then with obj_unfader instance_destroy()
-instance_create(0,0,obj_fader)
-obj_asriellamp.idealvolume[0]=0
-obj_asriellamp.idealvolume[1]=1
-if global.flag[103]=0 and global.plot&lt;20 then { global.flag[103]=1; instance_create(142,132,obj_pie_pickup); }
-alarm[3]=60
+            <string>if (global.plot &gt;= 24 &amp;&amp; jump &lt; 5)
+{
+    global.typer = 31
+    global.faceemotion = 0
+    global.facechoice = 0
+    global.msc = 0
+    global.msg[0] = (("* " + global.charname) + "^1, please.../")
+    global.msg[1] = "* Wake up!/"
+    global.msg[2] = "* You are the future&amp;  of humans and&amp;  monsters.../%%"
+    if (global.flag[7] == 1)
+    {
+        global.typer = 5
+        global.msg[0] = "* (It felt strange to lie&amp;  in the bed.)/"
+        global.msg[1] = "* (It feels entirely too&amp;  small for you now.)/%%"
+    }
+    obj_asriellamp.idealvolume[0] = 0
+    obj_asriellamp.idealvolume[1] = 0
+    instance_create(0, 0, obj_dialoguer)
+    with (obj_dialoguer)
+        depth = -999999
+    if instance_exists(OBJ_WRITER)
+    {
+        with (OBJ_WRITER)
+            depth = -9999999
+    }
+    jump = 5
+}
+if (jump == 5)
+    alarm[2] = 2
+if (instance_exists(obj_dialoguer) == 0)
+{
+    jump = 6
+    background_visible[1] = 0
+    background_visible[0] = 1
+    if (global.plot &lt; 20)
+        background_visible[2] = 1
+    global.facing = 3
+    obj_mainchara.x = 200
+    obj_mainchara.y = 104
+    global.hp = global.maxhp
+    if instance_exists(obj_unfader)
+    {
+        with (obj_unfader)
+            instance_destroy()
+    }
+    instance_create(0, 0, obj_fader)
+    obj_asriellamp.idealvolume[0] = 0
+    obj_asriellamp.idealvolume[1] = 1
+    if (global.flag[103] == 0 &amp;&amp; global.plot &lt; 20)
+    {
+        global.flag[103] = 1
+        instance_create(142, 132, obj_pie_pickup)
+    }
+    alarm[3] = 60
 }
 </string>
           </argument>
@@ -135,12 +158,13 @@ alarm[3]=60
           <argument>
             <kind>1</kind>
             <string>snd_play(snd_noise)
-global.phasing=1
-obj_solidsmall.solid=0
-with obj_mainchara path_start(path_bedjump,3,0,false)
-jump=1
-global.facing=2
-global.interact=1
+global.phasing = 1
+obj_solidsmall.solid = 0
+with (obj_mainchara)
+    path_start(path_bedjump, 3, path_action_stop, 0)
+jump = 1
+global.facing = 2
+global.interact = 1
 </string>
           </argument>
         </arguments>
@@ -163,22 +187,26 @@ global.interact=1
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if jump=1 and obj_mainchara.path_position=1 then
+            <string>if (jump == 1)
 {
-  instance_create(0,0,obj_unfader)
-  alarm[2]=60
-  jump=2
+    if (obj_mainchara.path_position == 1)
+    {
+        instance_create(0, 0, obj_unfader)
+        alarm[2] = 60
+        jump = 2
+    }
 }
-   
-
-if jump=3 and obj_mainchara.path_position=1 then
+if (jump == 3)
 {
-global.interact=0
-myinteract=0
-jump=0
-background_visible[2]=0
-obj_solidsmall.solid=1
-global.phasing=0
+    if (obj_mainchara.path_position == 1)
+    {
+        global.interact = 0
+        myinteract = 0
+        jump = 0
+        background_visible[2] = 0
+        obj_solidsmall.solid = 1
+        global.phasing = 0
+    }
 }
 </string>
           </argument>

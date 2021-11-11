@@ -25,12 +25,13 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>ii=caster_load("music/intronoise.ogg")
-caster_play(ii,1,1)
-alarm[5]=160
-ok=0
-jok=0
-rot=0
+            <string>ii = caster_load("music/intronoise.ogg")
+caster_play(ii, 1, 1)
+alarm[4] = 150
+ok = 0
+jok = 0
+rot = 0
+con = 0
 </string>
           </argument>
         </arguments>
@@ -114,6 +115,32 @@ instance_create(0,0,obj_dialoguer)
         </arguments>
       </action>
     </event>
+    <event eventtype="2" enumb="4">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>con += 1
+alarm[4] = 150
+if (con &lt; 3)
+    caster_play(ii, 1, 1)
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="2" enumb="3">
       <action>
         <libid>1</libid>
@@ -172,7 +199,8 @@ sprite_save(spr_19_3,0,"instruction/19.PNG")
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if instance_exists(OBJ_WRITER)=false and global.kills=0 then rot+=1
+            <string>if (instance_exists(OBJ_WRITER) == 0 &amp;&amp; global.kills == 0)
+        rot += 1
 </string>
           </argument>
         </arguments>
@@ -195,7 +223,8 @@ sprite_save(spr_19_3,0,"instruction/19.PNG")
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if instance_exists(OBJ_WRITER)=false and global.kills=0 then rot-=1
+            <string>if (instance_exists(OBJ_WRITER) == 0 &amp;&amp; global.kills == 0)
+    rot -= 1
 </string>
           </argument>
         </arguments>
@@ -222,25 +251,24 @@ sprite_save(spr_19_3,0,"instruction/19.PNG")
 
 if ok=1
 {
-draw_set_color(c_gray)
-draw_set_font(fnt_small)
-if jok=0
-  {
-  draw_text(30,150,"Written, programmed, and composed by Toby Fox")
-  draw_text(30,162,"Black and white art by Toby Fox")
-  draw_text(30,174,"Intro art and overworld characters by Tuyoki")
-  draw_text(30,186,"Tiles by Tuyoki, easynam, and Merrigo")
-  draw_text(30,206,"Caster OGG extension by Moacube")
-  draw_text(30,216,"and Marius Utheim")
-  }
-else
-  {
-  draw_set_font(fnt_maintext)
-  draw_set_color(c_red)
-   draw_text(30,150,"That was fun.")
-   draw_text(30,170,"Let's finish the job.")
-   }
-
+    draw_set_color(c_gray)
+    draw_set_font(fnt_small)
+    if jok=0
+    {
+          draw_text(30,150,"Written, programmed, and composed by Toby Fox")
+          draw_text(30,162,"Black and white art by Toby Fox")
+          draw_text(30,174,"Intro art and overworld characters by Tuyoki")
+          draw_text(30,186,"Tiles by Tuyoki, easynam, and Merrigo")
+          draw_text(30,206,"Caster OGG extension by Moacube")
+          draw_text(30,216,"and Marius Utheim")
+    }
+    else
+    {
+          draw_set_font(fnt_maintext)
+          draw_set_color(c_red)
+          draw_text(30,150,"That was fun.")
+          draw_text(30,170,"Let's finish the job.")
+    }
 }
 
 </string>

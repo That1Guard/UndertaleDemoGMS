@@ -726,6 +726,7 @@
     <sprite>sprites\spr_bluespear</sprite>
     <sprite>sprites\spr_whitespear</sprite>
     <sprite>sprites\spr_solidtall_2</sprite>
+    <sprite>sprites\sprite277</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background1</background>
@@ -894,6 +895,7 @@
     <script>scripts\scr_newvapordata.gml</script>
     <script>scripts\scr_dogcheck.gml</script>
     <script>scripts\draw_self_border_true.gml</script>
+    <script>scripts\scr_blcon.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fnt_plain</font>
@@ -1249,6 +1251,10 @@
     <object>objects\obj_sansbox</object>
     <object>objects\obj_storagemenu</object>
     <object>objects\obj_musicobjectparent</object>
+    <object>objects\obj_door_s_musfade</object>
+    <object>objects\obj_markers</object>
+    <object>objects\obj_torboss_2ndtime</object>
+    <object>objects\obj_blconwideslave</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room_start</room>
